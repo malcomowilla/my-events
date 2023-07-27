@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_062634) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_27_115403) do
+  create_table "attendees", force: :cascade do |t|
+    t.string "event_id"
+    t.string "user_id"
+    t.string "registration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.date "date"
+    t.string "description"
+    t.string "location"
+    t.string "organizer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "capacity"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "contact_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "event_id"
+    t.string "user_id"
+    t.string "ticket_type"
+    t.integer "price"
+    t.string "purchased_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"

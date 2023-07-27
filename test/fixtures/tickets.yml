@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: MyString
+  user_id: MyString
+  ticket_type: MyString
+  price: 1
+  purchased_date: MyString
+
+two:
+  event_id: MyString
+  user_id: MyString
+  ticket_type: MyString
+  price: 1
+  purchased_date: MyString
