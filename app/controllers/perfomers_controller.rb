@@ -1,0 +1,2 @@
+class PerfomersController < ApplicationController
+end
