@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_195346) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_065807) do
   create_table "attendees", force: :cascade do |t|
     t.string "event_id"
     t.string "user_id"
@@ -29,8 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_195346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "capacity"
-    t.integer "venue_id"
-    t.index ["venue_id"], name: "index_events_on_venue_id"
+    t.string "venue"
   end
 
   create_table "organizers", force: :cascade do |t|
@@ -41,16 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_195346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "perfomers", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.string "image_url"
-    t.boolean "has_upcoming_events"
-    t.integer "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ 
   create_table "tickets", force: :cascade do |t|
     t.string "event_id"
     t.string "user_id"
@@ -69,20 +59,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_195346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "country"
-    t.string "url"
-    t.string "postal_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "event_id", null: false
-    t.index ["event_id"], name: "index_venues_on_event_id"
-  end
-
-  add_foreign_key "events", "venues"
-  add_foreign_key "venues", "events"
 end
