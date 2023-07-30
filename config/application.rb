@@ -28,5 +28,6 @@ module EventsTicketing
     config.load_defaults 7.0
     # Load Performer model explicitly
     config.eager_load_paths << Rails.root.join("app/models")
+    Dotenv::Railtie.load
   end
 end

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     before_action :authorized, only: [:create, :profile]
 
 def encode_token(payload)
-    JWT.encode(payload, 'my_s3crt')
+    JWT.encode(payload, ENV['MY_SECRET_KEY'])
 end
 
 def auth_header
@@ -16,7 +16,7 @@ def decoded_token
     
 
     begin
-        JWT.decode(token, 'my_s3crt', true, algorithm: 'HS256')
+        JWT.decode(ENV['MY_SECRET_KEY'] true, algorithm: 'HS256')
 
     rescue JWT::DecodeError
         nil
