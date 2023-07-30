@@ -35,6 +35,16 @@ url_for_events = ["https://shorturl.at/fpDJ8",
         "https://shorturl.at/etxFM"
     ]
 
+    
+    images_for_event_organizers = [
+      "https://shorturl.at/arsNQ",
+      "https://shorturl.at/fsxX8",
+      "https://shorturl.at/afDW1",
+      "https://shorturl.at/uKLNO",
+      "https://shorturl.at/cwX69",
+      "https://shorturl.at/czJY7",
+      "https://shorturl.at/rCZ79"
+    ] 
     # Define the number of organizers you want to create
 num_organizers = 10
 
@@ -50,7 +60,9 @@ num_organizers.times do
   organizer = Organizer.create!(
     name: name,
     email: email,
-    contact_number: contact_number
+    contact_number: contact_number,
+    image: images_for_event_organizers.sample
+    
   )
 
   organizers << organizer
