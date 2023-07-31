@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
-    has_many :tickets
+    has_one :ticket
     belongs_to :organizer
     has_many :attendees 
-has_many  :tickets
 
 end
