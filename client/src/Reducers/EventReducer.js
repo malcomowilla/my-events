@@ -1,15 +1,17 @@
 
-
+ 
 //EventReducer manages state of data from FetchData
 
-const EventReducer = (eventState = { eventData: {} }, action) => {
+const EventReducer = (events =[], action) => {
     switch (action.type) {
-      case "FETCH_EVENTS_SUCCESS":
-        return { ...eventState, eventData: action.payload };
+      case "FETCH_EVENTS_SUCCESS"://action types as defined in FetchEvents
+        return { ...events, eventData: action.payload };
+
       case "FETCH_EVENTS_FAILURE":
-        return { ...eventState, error: action.payload };
+        return { ...events, error: action.payload };
+        
       default:
-        return eventState;
+        return events;
     }
 };
 export default EventReducer;

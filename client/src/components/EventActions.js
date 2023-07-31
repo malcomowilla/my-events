@@ -5,7 +5,9 @@ const FetchEvents = () => async (dispatch) => {
       const response = await fetch(eventsUrl);
       const eventData = await response.json();
       dispatch({ type: "FETCH_EVENTS_SUCCESS", payload: eventData });
-    } catch (error) {
+    } 
+    
+    catch (error) {
       dispatch({ type: "FETCH_EVENTS_FAILURE", payload: error.message });
     }
 };
