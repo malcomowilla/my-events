@@ -1,5 +1,5 @@
 //FetchEvents handles data fetch
-const FetchEvents = () => async (dispatch) => {
+export const FetchEvents = () => async (dispatch) => {
     try {
       const eventsUrl = "https://event-manager-1mtv.onrender.com/events";
       const response = await fetch(eventsUrl);
@@ -11,6 +11,6 @@ const FetchEvents = () => async (dispatch) => {
       dispatch({ type: "FETCH_EVENTS_FAILURE", payload: error.message });
     }
 };
-export default FetchEvents;
+
 
   

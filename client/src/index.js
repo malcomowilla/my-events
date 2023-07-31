@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-//for redux
+
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './Reducers/rootReducers';
@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 //store manages all reducers that are handling state
 const store = configureStore({
   reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== 'production', // Enable DevTools only in development
 });
 
 
