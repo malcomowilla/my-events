@@ -1,12 +1,23 @@
 class UsersController < ApplicationController
-skip_before_action :authorized, only: [:create] 
+skip_before_action :authorized, only: [:create_user]
+
+def profile
+        render json: {user: UserSerializer.new(current_user)}, status: :accepted
+        
+    end
+
     def create_user
         user = User.create(user_params)
     if user.valid?
-        NotifierMailer.alert_user.deliver
-        token = encode_token(user_id: user.id)
+         puts "User created successfully!"
+    puts user.inspect
+        token = encode_token({user_id: user.id})
+                UserMailer.welcome_email(user).deliver_now
+
         render json: {user: UserSerializer.new(user), jwt: token}, status: :created
         else
+            puts "Failed to create user!"
+    puts user.errors.full_messages
       render json: { error: 'failed to create user' }, status: :unprocessable_entity
     end
     end 
@@ -14,9 +25,10 @@ skip_before_action :authorized, only: [:create]
     def create
         user = User.find_by(username: params[:username] )
         if user && user.authenticate(params[:password])
-                    NotifierMailer.alert_user.deliver
 
             token = encode_token( user_id: user.id) 
+                UserMailer.welcome_email(user).deliver_now
+
             render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
         else
             render json: {message: 'Invalid username or password' }, status: :unauthorized
@@ -24,11 +36,9 @@ skip_before_action :authorized, only: [:create]
     end
 
 
-    def profile
-        render json: {user: UserSerializer.new(current_user)}, status: :accepted
-    end
-    private
+    
 
+    private
     def user_params
     params.permit(:username, :password, :password_confirmation, :email)
     end
