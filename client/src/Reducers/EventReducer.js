@@ -1,5 +1,5 @@
 
-//import { FetchEvents } from "../components/EventActions"; 
+
 //EventReducer manages state of data from FetchData
 
 const EventReducer = (events = [], action) => {

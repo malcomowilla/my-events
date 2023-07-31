@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {FetchEvents}  from "./EventActions"; //coz it's not the only component in EventActions
+import {FetchEvents}  from "./ServerActions"; //coz it's not the only component in EventActions
 
 const EventList = () => {
  // console.log("HI")
