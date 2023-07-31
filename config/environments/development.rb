@@ -60,17 +60,17 @@ Rails.application.configure do
   config.assets.quiet = true
 
    # Set the delivery method for Action Mailer to use letter_opener gem
-  # config.action_mailer.delivery_method = :letter_opener
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: "example.com",
-  user_name: "malcomowilla",
-  password: "malcommalin12",
-  authentication: "plain",
-  enable_starttls_auto: true
-}
+  config.action_mailer.delivery_method = :letter_opener
+# config.action_mailer.delivery_method = :smtp
+# config.action_mailer.smtp_settings = {
+#     address: ENV["SMTP_ADDRESS"],
+#   port: ENV["SMTP_PORT"],
+#   domain: ENV["SMTP_DOMAIN"],
+#   user_name: ENV["SMTP_USERNAME"],
+#   password: ENV["SMTP_PASSWORD"],
+#   authentication: ENV["SMTP_AUTHENTICATION"],
+#   enable_starttls_auto: ENV["SMTP_ENABLE_STARTTLS_AUTO"] == "true"
+# }
    # Set the default URL options for Action Mailer
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
