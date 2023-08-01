@@ -1,5 +1,7 @@
 require 'json'
 
+User.create(username:"Joseph",email:"joseph@email.com",password:"1111111")
+
 puts 'Seeding organizers...'
 events_title = ["Mountain Bike","Beach Gym", "Street photography", "Rock Gym", "Running Up", "Burn Yourself", "Let's Shovel!", "Kayaking on Rivers", "Net Skywalker!", "Skydive Crazy",
                 "Surf on Blue", "Camp Fish", "Grass Skiing", "Camp under Galaxy", "Skateboard, be cool!", "Central Skating", "Sketch", "Burn Fat!!", "Luke Skydiver!", "Family Skating", 
@@ -168,6 +170,7 @@ organizers.each do |organizer|
     end
   end
 end
+
 
 puts 'Events and Tickets seeded successfully!'
 #     # Define the number of organizers you want to create
