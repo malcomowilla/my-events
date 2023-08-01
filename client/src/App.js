@@ -4,10 +4,24 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import EventList from "./components/EventList";
 import Home from "./components/Home";
-
-
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { FetchEvents } from "./components/ServerActions"; //coz it's not the only component in EventActions
+import SignIn from "./components/SignIn";
+import SignUp from "./components/Signup";
 
 function App() {
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.events);
+  console.log(`events state variable:${events}`);
+  
+  useEffect(() => {
+    dispatch(FetchEvents());
+  }, [dispatch]);
+  console.log(`events state variable:${events}`);
+
+
   return (
     <BrowserRouter>
       <NavBar/>
@@ -15,7 +29,8 @@ function App() {
         
         <Route path="/" element={<Home/>}></Route>
         <Route path="/events" element={<EventList/>}></Route>
-        
+        <Route path="/signUp" element={<SignUp/>}></Route>
+        <Route path="/signIn" element={<SignIn/>}></Route>
       </Routes>
       
     </BrowserRouter>

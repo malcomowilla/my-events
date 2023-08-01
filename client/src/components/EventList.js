@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {FetchEvents}  from "./ServerActions"; //coz it's not the only component in EventActions
+import React from "react";
+//import { useDispatch, useSelector } from "react-redux";
+//import {FetchEvents}  from "./ServerActions"; //coz it's not the only component in EventActions
+import { useSelector } from "react-redux";//used to accesses the variables stored in redux state
+
 
 const EventList = () => {
- // console.log("HI")
-  const dispatch = useDispatch();
   const events = useSelector((state) => state.events);
-  //console.log(`events state variable:${events}`);
 
-  useEffect(() => {
-    dispatch(FetchEvents());
-  }, [dispatch]);
-  console.log(`events state variable:${events}`);
+ 
 
   return (
     <div>
