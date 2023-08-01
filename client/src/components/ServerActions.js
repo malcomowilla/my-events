@@ -52,6 +52,36 @@ export const NewUser=(userDetails)=> async (dispatch) => {
 
   
 }
+ //handles login => login is a post request
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+ export const LoginUser=(loginDetails)=> async (dispatch) => {
+  try {
+    const loginUrl="http://127.0.0.1:3000/login" ;
+    const response = await fetch(loginUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify(loginDetails), // Convert the userData to JSON string and send it in the request body
+    });
+    if (response.ok) {
+      
+      
+      dispatch({ type: "LOGIN_SUCCESS", payload: loginDetails  });
+    } else {
+      
+      dispatch({ type: "LOGIN_FAILURE", payload: "Error signing up." });
+    }
+  } catch (error) {
+    
+    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+  }
+
+  
+}
 
 
   
