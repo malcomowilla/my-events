@@ -15,8 +15,11 @@ const EventList = () => {
       <>EVENTS LIST</>
       {events.map((event) => (
         <div key={event.id}>
-          <h2>{event.title}</h2>
+          <h2>{event.name}</h2>
+          <div>{event.image_url}</div>
           <p>{event.description}</p>
+          <p>{event.location}</p>
+          <p>{event.date}</p>
         </div>
       ))}
     </div>
