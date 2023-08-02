@@ -1,26 +1,16 @@
 import React from "react";
-//import { useDispatch, useSelector } from "react-redux";
-//import {FetchEvents}  from "./ServerActions"; //coz it's not the only component in EventActions
-import { useSelector } from "react-redux";//used to accesses the variables stored in redux state
-
+import EventItem from "./EventItem";
+import { useSelector } from "react-redux";
 
 const EventList = () => {
+  // Assuming that you have the events array in the Redux state
   const events = useSelector((state) => state.events);
-
- 
 
   return (
     <div>
-      {/* Render your component using the events data */}
-      <>EVENTS LIST</>
+      <h1>EVENTS LIST</h1>
       {events.map((event) => (
-        <div key={event.id}>
-          <h2>{event.name}</h2>
-          <div>{event.image_url}</div>
-          <p>{event.description}</p>
-          <p>{event.location}</p>
-          <p>{event.date}</p>
-        </div>
+        <EventItem key={event.id} event={event} />
       ))}
     </div>
   );

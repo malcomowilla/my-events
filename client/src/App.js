@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import { FetchEvents } from "./components/ServerActions"; //coz it's not the only component in EventActions
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import EventDetails from "./components/EventDetails";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ function App() {
         <Route path="/events" element={<EventList/>}></Route>
         <Route path="/signUp" element={<SignUp/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
+        <Route path="/EventDetails/:id" element={<EventDetails/>}></Route>
       </Routes>
       
     </BrowserRouter>
