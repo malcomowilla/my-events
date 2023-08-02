@@ -1,9 +1,10 @@
 /* handles sign up for a ticketuser(customer) and event organiser*/
 //username,email
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { SIGNUP_REQUEST } from "./ServerActions";
+import { useDispatch,useSelector } from "react-redux";
+import {  SIGNUP_SUCCESS } from "./ServerActions";
+import { NewUser } from "./ServerActions";
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -14,21 +15,29 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const userDetails = useSelector((state) => state.newUser.userDetails);
+
   function handleFormSubmit(event) {
-    console.log("Submit button clicked")
+    console.log("Submit button clicked");
     event.preventDefault();
-    
-    const userDetails = {
+
+    const newUserDetails = {
       username: username,
       email: email,
       password: password,
     };
-    console.log(userDetails)
-
+    console.log(newUserDetails);
 
     // Dispatch the newUser action with userDetails
-    dispatch({ type: SIGNUP_REQUEST ,payload: userDetails});
+    dispatch({ type: SIGNUP_SUCCESS, payload: newUserDetails });
   }
+
+  // Use useEffect to call NewUser when userDetails changes
+  useEffect(() => {
+    if (userDetails) {
+      dispatch(NewUser(userDetails));
+    }
+  }, [userDetails, dispatch]);
 return(
     <>
       
@@ -71,7 +80,7 @@ return(
         <p>
           Already have an account?
           <br />{" "}
-          <Link to="/signIn">
+          <Link to="/login">
             Login Here
           </Link>
         </p>

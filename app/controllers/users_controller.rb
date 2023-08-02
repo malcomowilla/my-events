@@ -21,7 +21,7 @@ def profile
       render json: { error: 'failed to create user' }, status: :unprocessable_entity
     end
     end 
-
+    #login login POST   /login(
     def create
         user = User.find_by(username: params[:username] )
         if user && user.authenticate(params[:password])
@@ -31,7 +31,7 @@ def profile
 
             render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
         else
-            render json: {message: 'Invalid username or password' }, status: :unauthorized
+            render json: { message: 'Invalid username or password', error: 'Authentication failed' }, status: :unauthorized
         end
     end
 

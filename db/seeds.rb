@@ -1,5 +1,7 @@
 require 'json'
 
+User.create(username:"Joseph",email:"joseph@email.com",password:"1111111")
+
 puts 'Seeding organizers...'
 events_title = ["Mountain Bike","Beach Gym", "Street photography", "Rock Gym", "Running Up", "Burn Yourself", "Let's Shovel!", "Kayaking on Rivers", "Net Skywalker!", "Skydive Crazy",
                 "Surf on Blue", "Camp Fish", "Grass Skiing", "Camp under Galaxy", "Skateboard, be cool!", "Central Skating", "Sketch", "Burn Fat!!", "Luke Skydiver!", "Family Skating", 
@@ -95,7 +97,7 @@ url_for_events = ["https://shorturl.at/fpDJ8",
     ] 
 
 
-    ticket_type_data = ["general-admission", "VIP", "family pass", "barly-Bird", "premium-seating", "backstage-pass", "gold-ticket"] 
+    ticket_type_data = ["general-admission", "VIP", "family pass", "early-bird", "premium-seating", "backstage-pass", "gold-ticket"] 
 ticket_images = [
   "https://shorturl.at/yzH46",
   "https://shorturl.at/cemY6",
@@ -152,22 +154,38 @@ organizers.each do |organizer|
     event = Event.create!(event_data)
 
     # Create a random number of tickets for each event
+    
     num_tickets_per_event = rand(50..200)
     num_tickets_per_event.times do
       user = User.all.sample
+      ticket_type = ticket_type_data.sample
+      price_range = {
+        "general-admission" => { min: 50, max: 100 },
+        "VIP" => { min: 150, max: 300 },
+        "family pass" => { min: 500, max: 1000 },
+        "early-bird" => { min: 120, max: 250 },
+        "premium-seating" => { min: 200, max: 400 },
+        "backstage-pass" => { min: 300, max: 600 },
+        "gold-ticket" => { min: 400, max: 800 }
+      }
+      min_price = price_range[ticket_type][:min]
+      max_price = price_range[ticket_type][:max]
+      price = Faker::Number.between(from: min_price, to: max_price)
+    
       ticket_data = {
-        ticket_type: ticket_type_data.sample,
+        ticket_type: ticket_type,
         image: ticket_images.sample,
-        price: Faker::Number.decimal(l_digits: 3, r_digits: 2),
+        price: price,
         purchased_date: Faker::Date.between(from: Date.today, to: Date.today + 30.days),
         user: user,
         event: event
       }
-
+    
       Ticket.create!(ticket_data)
     end
   end
 end
+
 
 puts 'Events and Tickets seeded successfully!'
 #     # Define the number of organizers you want to create

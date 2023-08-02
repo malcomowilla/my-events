@@ -8,8 +8,10 @@ import Home from "./components/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { FetchEvents } from "./components/ServerActions"; //coz it's not the only component in EventActions
-import SignIn from "./components/SignIn";
+import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import EventDetails from "./components/EventDetails";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +32,8 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/events" element={<EventList/>}></Route>
         <Route path="/signUp" element={<SignUp/>}></Route>
-        <Route path="/signIn" element={<SignIn/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/EventDetails/:id" element={<EventDetails/>}></Route>
       </Routes>
       
     </BrowserRouter>
