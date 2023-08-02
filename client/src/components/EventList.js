@@ -11,7 +11,7 @@ const EventList = () => {
       <h1>EVENTS LIST</h1>
       {events.map((event) => (
         <EventItem key={event.id} event={event} />
-      ))}
+       ))}
     </div>
   );
 };

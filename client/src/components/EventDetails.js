@@ -26,6 +26,8 @@ function EventDetails() {
       });
   }, [id]);
 
+  console.log(event)
+
  
  
   return (
