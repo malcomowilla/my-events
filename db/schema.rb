@@ -20,4 +20,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_074901) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "attendees", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
