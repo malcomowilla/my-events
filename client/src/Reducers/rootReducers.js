@@ -2,6 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import EventReducer from './EventReducer';
 import userReducer from './UserReducer';
 import loginReducer from './loginReducer';
+import ticketReducer from './ticketReducer';
 //import other reducers here
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   newUser: userReducer,
   loginUser: loginReducer,
   events: EventReducer,
+  tickets: ticketReducer,
 });
 
 export default rootReducer;
