@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const EventItem = (props) => {
     const event = props.event;
     const id= event.id
+    const navigate=useNavigate();
+    const details=()=>{
+        navigate(`/EventDetails/${id}`)
+    }
     
     return (
       <div key={event.id}>
@@ -13,9 +17,7 @@ const EventItem = (props) => {
         <p>
           See more
           <br />{" "}
-          <Link to={`/EventDetails/${id}`}>
-            Details
-          </Link>
+          <button onClick={details}>Details</button>
         </p>
       </div>
     );
