@@ -29,4 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_074901) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 10, scale: 2
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
+  add_index "tickets", ["event_id"], name: "index_tickets_on_event_id"
+
+
 end
+
