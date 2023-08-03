@@ -245,8 +245,3 @@ puts 'Events and Tickets seeded successfully!'
 
 
 # puts 'Events seeded successfully!'
-
-
-
-
-
