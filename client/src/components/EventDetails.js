@@ -3,11 +3,13 @@ import { useState, useEffect }from "react";
 //import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 //import { useSelector } from "react-redux";
+import Ticket from "./Ticket";
 
 
 const EventDetails=()=> {
   const { id } = useParams();
   const [event, setEvent] = useState({});
+  const [tickets,setTickets]=useState([]);
 
   // Fetch individual event= event details
   useEffect(() => {
@@ -20,6 +22,24 @@ const EventDetails=()=> {
         console.error("Error:", error);
       });
   }, [id]);
+
+  // Fetch individual tickets related to the event
+  useEffect(() => {
+    fetch(`http://localhost:3000/events/${id}/tickets`, {
+      method: 'GET',
+      headers: {
+        "Accept": "application/json" // Correct header key is "Accept"
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setTickets(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  }, [id]);
+  console.log(tickets)
 
   return (
     <>
@@ -38,6 +58,7 @@ const EventDetails=()=> {
           </div>
         </>
       )}
+      <Ticket tickets={tickets}/>
     </>
   );
 }
