@@ -58,7 +58,7 @@ const EventDetails=()=> {
           </div>
         </>
       )}
-      <Ticket tickets={tickets}/>
+      <Ticket tickets={tickets} event={event}/>
     </>
   );
 }
