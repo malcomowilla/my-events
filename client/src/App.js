@@ -11,6 +11,7 @@ import { FetchEvents } from "./components/ServerActions"; //coz it's not the onl
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import EventDetails from "./components/EventDetails";
+import TicketCart from "./components/TicketCart";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/signUp" element={<SignUp/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/EventDetails/:id" element={<EventDetails/>}></Route>
+        <Route path="/BookedTickets" element={<TicketCart/>}></Route>
       </Routes>
       
     </BrowserRouter>
