@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-          validates :title, presence: true
+  validates :title, presence: true
   validates :description, presence: true
   validates :location, presence: true
   alidates :age_limit, presence: true
