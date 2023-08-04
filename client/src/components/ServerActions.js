@@ -57,7 +57,7 @@ export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
- export const LoginUser=(loginDetails)=> async (dispatch) => {
+export const LoginUser=(loginDetails)=> async (dispatch) => {
   try {
     const loginUrl="http://127.0.0.1:3000/login" ;
     const response = await fetch(loginUrl, {
@@ -79,9 +79,37 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
     
     dispatch({ type: "LOGIN_FAILURE", payload: error.message });
   }
-
-  
 }
+
+//post tickets associated to a particular user
+export const TICKET_REQUEST = "TICKET_REQUEST";
+export const TICKET_SUCCESS = "TICKET_SUCCESS";
+export const TICKET_FAILURE = "TICKET_FAILURE";
+
+export const PostTickets=(ticket)=> async (dispatch) => {
+  try{
+    const postTicketUrl="";
+    const response = await fetch(postTicketUrl,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify(ticket),
+    });
+    if (response.ok) {
+      
+      
+      dispatch({ type: "TICKET_SUCCESS", payload: ticket  });
+    } else {
+      
+      dispatch({ type: "TICKET_FAILURE", payload: "Error signing up." });
+    }
+  } catch (error) {
+    
+    dispatch({ type: "TICKET_FAILURE", payload: error.message });
+  }
+}
+
 
 
   
