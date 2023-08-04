@@ -1,5 +1,5 @@
 import { ADD_BOOKED_TICKET } from "./ticketActions";
-
+import { REMOVE_BOOKED_TICKET } from "./ticketActions";
 const initialState = {
   bookedTickets: [],
 };
@@ -10,6 +10,11 @@ const ticketReducer = (state = initialState, action) => {
       return {
         ...state,
         bookedTickets: [...state.bookedTickets, action.payload],
+      };
+    case REMOVE_BOOKED_TICKET:
+      return {
+        ...state,
+        bookedTickets: state.bookedTickets.filter(ticket => ticket.id !== action.payload.id),
       };
     default:
       return state;

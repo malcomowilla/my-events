@@ -13,6 +13,12 @@ const NavBar = () => {
      <Link to="/events">
         Events
      </Link>{" "}
+     <Link to="/BookedTickets">
+        Cart
+     </Link>{" "}
+     <Link to="/Organizer">
+        Organizer
+     </Link>{" "}
      {/*<Link to="/">
         About
   </Link>{" "}*/}

@@ -3,11 +3,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import EventItem from "./EventItem";
 import { useNavigate } from "react-router-dom";
+
 const Home=()=>{
   const navigate=useNavigate()
   const events = useSelector((state) => state.events);
   const allEvents=()=>{
      navigate("/events")
+  }
+  const eventsCRUD=()=>{
+    navigate("/Organizer")
   }
   // Limit the events to 6 
   const homePageEvents = events.slice(0, 6);
@@ -18,6 +22,9 @@ const Home=()=>{
             WATU wa Css
           </h2>
           <br />{" "}
+          <p>Do you have events you want to share with us?
+            Host them with us here:<button onClick={eventsCRUD}>Organizer</button>
+          </p>
           <button onClick={allEvents}>
             See more events...
           </button>
