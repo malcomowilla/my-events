@@ -5,9 +5,9 @@ const Organizer=()=>{
 
 return(
     <>
-      <h2>Sign up as an organizer</h2>
+      <h2>organizer crud</h2>
       
-      <h2>Login</h2>
+    
     
     </>
 )
