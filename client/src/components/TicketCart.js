@@ -16,6 +16,7 @@ const TicketCart = () => {
 
     return (
         <>
+           <h2>Cart</h2>
             {ticketCart.map((ticket) => (
                 <div key={ticket.id}>
                     
@@ -27,7 +28,7 @@ const TicketCart = () => {
                 </div>
             ))}
 
-            <h1>Total: Ksh{sum}</h1>
+            <h3>Total: Ksh{sum}</h3>
         </>
     );
 };
