@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import EventDetails from "./components/EventDetails";
 import TicketCart from "./components/TicketCart";
+import Organizer from "./components/Organizer";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/EventDetails/:id" element={<EventDetails/>}></Route>
         <Route path="/BookedTickets" element={<TicketCart/>}></Route>
+        <Route path="/Organizer" element={<Organizer/>}></Route>
       </Routes>
       
     </BrowserRouter>
