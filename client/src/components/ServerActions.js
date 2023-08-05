@@ -128,8 +128,26 @@ export const PostTickets=(ticket)=> async (dispatch) => {
     dispatch({ type: "TICKET_FAILURE", payload: error.message });
   }
 }
-
-
+//fetches booked tickets specific to a logged in user in the cart
+export const FETCH_BOOKED_TICKETS_SUCCESS = "FETCH_BOOKED_TICKETS_SUCCESS";
+export const fetchBookedTickets = () => async (dispatch) => {
+  try {
+    const bookedTicketsUrl="http://127.0.0.1:3000/booked_tickets/get"
+    const response = await fetch(bookedTicketsUrl,{
+      method: "GET",
+      headers: {
+        "Accept": "application/json", // Specify that the client expects a JSON response
+        // You can add more headers here if needed
+      },
+    });
+    const bookedTicketData = await response.json();
+    dispatch({ type: "FETCH_BOOKED_TICKETS_SUCCESS", payload: bookedTicketData });
+  } 
+  
+  catch (error) {
+    console.error("Error fetching booked tickets:", error);
+  }
+};
 
 
 

@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const EventDetails = () => {
   const navigate=useNavigate()
-  const { id } = useParams();
+  const { id } = useParams();//for events
   const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
+  
   console.log(`logging isAuthenticated on console ${isAuthenticated}`)
   const [event, setEvent] = useState({});
   const [tickets, setTickets] = useState([]);
@@ -38,6 +39,7 @@ const EventDetails = () => {
         console.error("Error:", error);
       });
   }, [id]);
+  console.log(tickets[0])
 
   const toLogin=()=>{
    navigate("/login")
