@@ -1,4 +1,4 @@
-import { ADD_BOOKED_TICKET } from "./ticketActions";
+import { ADD_BOOKED_TICKET } from "../components/ServerActions";
 import { REMOVE_BOOKED_TICKET } from "./ticketActions";
 const initialState = {
   bookedTickets: [],

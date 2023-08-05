@@ -13,21 +13,27 @@ import EventDetails from "./components/EventDetails";
 import TicketCart from "./components/TicketCart";
 import Organizer from "./components/Organizer";
 import AuthProvider from "./providers/Auth.provider";
+import { useAuthContext } from "./providers/Auth.provider";
+//import { useNavigate } from "react-router-dom";
 
-const SecureRoute = (Component) => {
-  return (
-    <AuthProvider required={true}>
-      <NavBar />
-      <Component />
-    </AuthProvider>
-  );
+const SecureRoute = ({ component: Component, ...rest }) => {
+  const authContext = useAuthContext(); // Get the user context
+ // const navigate=useNavigate();
+ /* const toLogin=()=>{
+    navigate("/login")
+  }*/
+  if (rest.required && !authContext.user.isAuthenticated) {
+    // Redirect to login page if not authenticated
+  return <Login/>
+  }
+
+  return <Component />;
 };
-
-const BaseRoute = (Component) => {
+const BaseRoute = ({ component: Component }) => { // Using destructuring here
   return (
     <AuthProvider required={false}>
       <NavBar />
-      <Component />
+      <Component /> {/* Rendering the Component here */}
     </AuthProvider>
   );
 };
@@ -44,18 +50,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      
+      {/*<AuthProvider required={true}> {/* Pass required={true} for secure routes */}
       <Routes>
-        
-        <Route path="/" element={BaseRoute(Home)}></Route>
-        <Route path="/events" element={BaseRoute(EventList)}></Route>
-        <Route path="/signUp" element={BaseRoute(SignUp)}></Route>
-        <Route path="/login" element={BaseRoute(Login)}></Route>
-        <Route path="/EventDetails/:id" element={SecureRoute(EventDetails)}></Route>
-        <Route path="/BookedTickets" element={SecureRoute(TicketCart)}></Route>
-        <Route path="/Organizer" element={SecureRoute(Organizer)}></Route>
+        <Route path="/" element={<BaseRoute component={Home}/>}></Route>
+        <Route path="/events" element={<BaseRoute component={EventList}/>}></Route>
+        <Route path="/signUp" element={<BaseRoute component={SignUp}/>}></Route>
+        <Route path="/login" element={<BaseRoute component={Login}/>}></Route>
+        <Route path="/EventDetails/:id" element={<SecureRoute component={EventDetails} />} />
+        <Route path="/BookedTickets" element={<SecureRoute component={TicketCart} />}></Route>
+        <Route path="/Organizer" element={<SecureRoute component={Organizer}/>}></Route>
       </Routes>
-      
+      {/*</AuthProvider>*/}
     </BrowserRouter>
   );
 }

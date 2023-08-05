@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :booked_tickets
   resources :tickets
   resources :attendees
-  # resources :organizers
-  # resources :events
+  resources :organizers
+  resources :events
   post '/signup', to: 'users#create_user'
   post '/login', to: 'users#create'
   get '/profile', to: 'users#profile'

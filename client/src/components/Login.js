@@ -1,34 +1,33 @@
-import { useState,useEffect } from "react"
-import { useDispatch,useSelector } from "react-redux";
-import { LOGIN_SUCCESS, LoginUser } from "./ServerActions";
+import { useState} from "react"
+import { useDispatch/*,useSelector*/ } from "react-redux";
+import { /*LOGIN_SUCCESS,*/ LoginUser } from "./ServerActions";
+import { logoutUser } from "../Reducers/loginReducer";
 const Login=()=>{
    const dispatch = useDispatch()
 
     const[username,setUsername]=useState("");
     const[password,setPassword]=useState("");
+    const loginDetails={
+      username:username,
+      password:password
+  }
     
-    const loginDetails = useSelector((state) => state.loginUser.loginDetails);
+    //const loginDetails = useSelector((state) => state.loginUser.loginDetails);
     function handleFormSubmit(event) {
     console.log("Submit button clicked");
     event.preventDefault();
 
-    const newLoginDetails={
-        username:username,
-        password:password
+   
+    dispatch(LoginUser(loginDetails));
     }
-    console.log(newLoginDetails);
-
-    // Dispatch the newUser action with userDetails
-    dispatch({ type: LOGIN_SUCCESS, payload: newLoginDetails  });
+  const handleLogOut=()=>{
+    // After dispatching logout action
+    if(loginDetails !== null)
+    dispatch(logoutUser(loginDetails));
+   // Clear local storage
+    localStorage.removeItem("user"); 
   }
-
-  // Use useEffect to call NewUser when userDetails changes
-  useEffect(() => {
-    if (loginDetails) {
-      dispatch(LoginUser(loginDetails));
-    }
-  }, [loginDetails, dispatch]);
- return(
+  return(
     <>
       
 
@@ -59,6 +58,11 @@ const Login=()=>{
           Enter
         </button>
         </form>
+        <div>
+            <h2>Log Out</h2>
+            <button onClick={handleLogOut}>LOG OUT</button>
+        </div>
+        
     </>
 
 )
