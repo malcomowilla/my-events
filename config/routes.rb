@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :booked_tickets
+  #resources :booked_tickets
   resources :tickets
   resources :attendees
   resources :organizers
@@ -10,6 +10,16 @@ Rails.application.routes.draw do
 
   get 'events/:id/tickets', to: 'tickets#specific_tickets'
   delete '/logout', to: 'users#destroy'
+
+  #routes for booked tickets
+
+  resources :booked_tickets, only: [] do
+    collection do
+      get '/get/:id', to: 'booked_tickets#get'
+      post :post
+      delete '/delete/:id', to: 'booked_tickets#delete'
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

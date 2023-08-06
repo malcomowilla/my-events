@@ -3,34 +3,86 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeBookedTicket } from "../Reducers/ticketActions";
-import { fetchBookedTickets } from "./ServerActions";
+//import { fetchBookedTickets } from "./ServerActions";
+import { useNavigate } from "react-router-dom";
 
 const TicketCart = () => {
-    const loggedInUser = useSelector((state) => state.loginUser.loginDetails.user);
+    const navigate = useNavigate();
+    //const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
+    /*const toLogin=(
+        navigate('/login')
+    )*/
+    const loggedInUser = useSelector(state => state.loginUser.loginDetails.user);
+   // const authToken=useSelector(state => state.loginUser.jwt)
     const dispatch = useDispatch();
-    const [ticketCart, setTicketCart] = useState([]);
+
+    
     const [ticketCounts, setTicketCounts] = useState([]);
     const [ticketPrices, setTicketPrices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     
-    useEffect(() => {
-        if (loggedInUser) {
+    //const bookedTicketData=useSelector((state)=>state.bookedTickets.bookedTickets);
+   /* useEffect(() => {
+        console.log("Fetching booked tickets for user:", loggedInUser);
+        if (loggedInUser && loggedInUser.id) {
             dispatch(fetchBookedTickets(loggedInUser.id))
-                .then((bookedTicketData) => {
-                    setTicketCart(bookedTicketData);
-                })
-                .catch((error) => {
+                .catch(error => {
                     console.error("Error fetching booked tickets:", error);
+                })
+                .finally(() => {
+                    setIsLoading(false);
                 });
+        } else {
+            setIsLoading(false); // Set isLoading to false if user data is not available
         }
-    }, [dispatch, loggedInUser]);
-    
+        
+       
+    },[dispatch, loggedInUser]);   
+    setTicketCart(bookedTicketData)*/
     useEffect(() => {
-        if (ticketCart.length > 0) {
-            setTicketCounts(Array(ticketCart.length).fill(1));
-            setTicketPrices(Array(ticketCart.length).fill(0));
-        }
-    }, [ticketCart]);
-
+        const fetchBookedTickets = async () => {
+            if (loggedInUser) {
+                const bookedTicketsUrl = `http://127.0.0.1:3000/booked_tickets/get/${loggedInUser.id}`;
+               
+                try {
+                    const response = await fetch(bookedTicketsUrl, {
+                        method: "GET",
+                        headers: {
+                            "Accept": "application/json",
+                            //"Authorization": `Bearer ${authToken}`,
+                        },
+                    });
+    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log(data); // Check if data is fetched correctly
+                        const uniqueTickets = data.reduce((acc, ticket) => {
+                            const existingTicket = acc.find(existing => existing.id === ticket.id);
+                            if (!existingTicket) {
+                                acc.push(ticket);
+                            }
+                            return acc;
+                        }, []);
+                        console.log(uniqueTickets); // Check if uniqueTickets is correct
+                        setTicketCart(uniqueTickets);
+                        setIsLoading(false);
+                    } else {
+                        console.error("Error fetching booked tickets:", response.statusText);
+                        setIsLoading(false);
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    setIsLoading(false);
+                }
+            } else {
+                setIsLoading(false);
+            }
+        };
+    
+        fetchBookedTickets();
+    }, [loggedInUser]);
+    
+    const [ticketCart, setTicketCart] = useState([]);
     const addTicket = (index) => {
         const updatedCounts = [...ticketCounts];
         updatedCounts[index] += 1;
@@ -63,11 +115,23 @@ const TicketCart = () => {
     const removeTicket = (ticket) => {
         dispatch(removeBookedTicket(ticket));
     }
-    
-    return (
+    /*if (!isAuthenticated) {
+        return (
+            <>
+                <p>Please log in to view your Cart.</p>
+                <button onClick={toLogin}>to Login</button>
+            </>
+        );
+    }
+
+    if (isLoading) {
+        return (<p>Loading...</p>);
+    }else{*/
+    return(
         <>
             <h2>Cart</h2>
-            {loggedInUser ? (
+            { 
+                
                 ticketCart.map((ticket, index) => (
                     <div key={ticket.id}>
                         <h1>{ticket.event.name}</h1>
@@ -83,9 +147,7 @@ const TicketCart = () => {
                         <button onClick={() => removeTicket(ticket)}>Remove</button>
                     </div>
                 ))
-            ) : (
-                <p>Please log in to view your booked tickets.</p>
-            )}
+            }
             <h3>Total Checkout: Ksh{totalPrice}</h3>
             <button>Proceed to payment</button>
         </>
@@ -93,3 +155,4 @@ const TicketCart = () => {
 };
 
 export default TicketCart;
+

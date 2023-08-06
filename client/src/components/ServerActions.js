@@ -1,6 +1,6 @@
 //FetchEvents handles data fetch
 /*for user*/
-
+//import { useSelector } from "react-redux";
 
 
 export const FetchEvents = () => async (dispatch) => {
@@ -128,12 +128,15 @@ export const PostTickets=(ticket)=> async (dispatch) => {
     dispatch({ type: "TICKET_FAILURE", payload: error.message });
   }
 }
+/*
 //fetches booked tickets specific to a logged in user in the cart
 export const FETCH_BOOKED_TICKETS_SUCCESS = "FETCH_BOOKED_TICKETS_SUCCESS";
-export const fetchBookedTickets = () => async (dispatch) => {
+
+export const fetchBookedTickets = (userId) => async (dispatch) => {
+ // const userId = useSelector((state) => state.loginUser.loginDetails.user.id);
   try {
-    const bookedTicketsUrl="http://127.0.0.1:3000/booked_tickets/get"
-    const response = await fetch(bookedTicketsUrl,{
+    const bookedTicketsUrl = `http://127.0.0.1:3000/booked_tickets/get/${userId}`;
+    const response = await fetch(bookedTicketsUrl, {
       method: "GET",
       headers: {
         "Accept": "application/json", // Specify that the client expects a JSON response
@@ -141,15 +144,10 @@ export const fetchBookedTickets = () => async (dispatch) => {
       },
     });
     const bookedTicketData = await response.json();
-    dispatch({ type: "FETCH_BOOKED_TICKETS_SUCCESS", payload: bookedTicketData });
-  } 
-  
-  catch (error) {
+    console.log('booked tickets fetched')
+    console.log(bookedTicketData)
+    dispatch({ type: FETCH_BOOKED_TICKETS_SUCCESS, payload: bookedTicketData });
+  } catch (error) {
     console.error("Error fetching booked tickets:", error);
   }
-};
-
-
-
-
-  
+};*/

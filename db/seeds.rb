@@ -155,34 +155,34 @@ organizers.each do |organizer|
 
     # Create a random number of tickets for each event
     
-    num_tickets_per_event = rand(50..200)
-    num_tickets_per_event.times do
-      user = User.all.sample
-      ticket_type = ticket_type_data.sample
-      price_range = {
-        "general-admission" => { min: 50, max: 100 },
-        "VIP" => { min: 150, max: 300 },
-        "family pass" => { min: 500, max: 1000 },
-        "early-bird" => { min: 120, max: 250 },
-        "premium-seating" => { min: 200, max: 400 },
-        "backstage-pass" => { min: 300, max: 600 },
-        "gold-ticket" => { min: 400, max: 800 }
-      }
-      min_price = price_range[ticket_type][:min]
-      max_price = price_range[ticket_type][:max]
-      price = Faker::Number.between(from: min_price, to: max_price)
-    
-      ticket_data = {
-        ticket_type: ticket_type,
-        image: ticket_images.sample,
-        price: price,
-        purchased_date: Faker::Date.between(from: Date.today, to: Date.today + 30.days),
-        user: user,
-        event: event
-      }
-    
-      Ticket.create!(ticket_data)
-    end
+ num_tickets_per_event = rand(50..200)
+ num_tickets_per_event.times do
+  #user = nil # Set user to nil for no user association
+  ticket_type = ticket_type_data.sample
+  price_range = {
+    "general-admission" => { min: 50, max: 100 },
+    "VIP" => { min: 150, max: 300 },
+    "family pass" => { min: 500, max: 1000 },
+    "early-bird" => { min: 120, max: 250 },
+    "premium-seating" => { min: 200, max: 400 },
+    "backstage-pass" => { min: 300, max: 600 },
+    "gold-ticket" => { min: 400, max: 800 }
+  }
+  min_price = price_range[ticket_type][:min]
+  max_price = price_range[ticket_type][:max]
+  price = Faker::Number.between(from: min_price, to: max_price)
+
+  ticket_data = {
+    ticket_type: ticket_type,
+    image: ticket_images.sample,
+    price: price,
+    purchased_date: Faker::Date.between(from: Date.today, to: Date.today + 30.days),
+    #user: user, # Set user to nil
+    event: event
+  }
+
+  Ticket.create!(ticket_data)
+end
   end
 end
 

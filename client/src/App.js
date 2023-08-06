@@ -57,7 +57,7 @@ function App() {
         <Route path="/signUp" element={<BaseRoute component={SignUp}/>}></Route>
         <Route path="/login" element={<BaseRoute component={Login}/>}></Route>
         <Route path="/EventDetails/:id" element={<SecureRoute component={EventDetails} />} />
-        <Route path="/BookedTickets" element={<SecureRoute component={TicketCart} />}></Route>
+        <Route path="/BookedTickets" element={<BaseRoute component={TicketCart} />}></Route>
         <Route path="/Organizer" element={<SecureRoute component={Organizer}/>}></Route>
       </Routes>
       {/*</AuthProvider>*/}
