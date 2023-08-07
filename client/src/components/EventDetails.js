@@ -1,17 +1,18 @@
-import React from "react";
-import { useState, useEffect }from "react";
-//import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Ticket from "./Ticket";
+import { useNavigate } from "react-router-dom";
 
-
-const EventDetails=()=> {
-  const { id } = useParams();
+const EventDetails = () => {
+  const navigate=useNavigate()
+  const { id } = useParams();//for events
+  const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
+  
+  console.log(`logging isAuthenticated on console ${isAuthenticated}`)
   const [event, setEvent] = useState({});
-  const [tickets,setTickets]=useState([]);
+  const [tickets, setTickets] = useState([]);
 
-  // Fetch individual event= event details
   useEffect(() => {
     fetch(`http://localhost:3000/events/${id}`)
       .then((response) => response.json())
@@ -23,24 +24,35 @@ const EventDetails=()=> {
       });
   }, [id]);
 
-  // Fetch individual tickets related to the event
   useEffect(() => {
     fetch(`http://localhost:3000/events/${id}/tickets`, {
       method: 'GET',
       headers: {
-        "Accept": "application/json" // Correct header key is "Accept"
+        "Accept": "application/json"
       }
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setTickets(data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        setTickets(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }, [id]);
-  console.log(tickets)
+  console.log(tickets[0])
 
+  const toLogin=()=>{
+   navigate("/login")
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <>
+      <p>Please log in to view event details.</p>
+      <button onClick={toLogin}>to Login</button>
+      </>
+    );
+  }else
   return (
     <>
       {event.name && (
@@ -58,7 +70,7 @@ const EventDetails=()=> {
           </div>
         </>
       )}
-      <Ticket tickets={tickets} event={event}/>
+      <Ticket tickets={tickets} event={event} />
     </>
   );
 }

@@ -1,19 +1,21 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-//this is for authentication and secure routing in our app
+//import { loginUser } from "../Reducers/loginReducer"; // Import loginUser from your reducer
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children, required }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ isAuthenticated: false });
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    setUser(user);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser({ ...storedUser, isAuthenticated: true });
+    }
   }, []);
 
-  if (!user && required) {
+  if (!user.isAuthenticated && required) {
     navigate("/login");
     return null;
   }
@@ -21,16 +23,14 @@ export const AuthProvider = ({ children, required }) => {
   const logOut = () => {
     localStorage.removeItem("user");
     navigate("/");
-    setUser(null);
+    setUser({ isAuthenticated: false }); // Reset user state when logging out
   };
 
   return (
-    <AuthContext.Provider value={{ user, logOut ,required}}>
+    <AuthContext.Provider value={{ user, logOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export default AuthProvider;
-
+export default AuthProvider
 export const useAuthContext = () => useContext(AuthContext);

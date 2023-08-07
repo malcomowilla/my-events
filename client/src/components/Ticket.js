@@ -1,18 +1,57 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addBookedTicket } from "../Reducers/ticketActions";//brings the action type so it can be dispatched
-import { useNavigate } from "react-router-dom";
-const Ticket = ({ event,tickets }) => {
-  const navigate=useNavigate()//for routing
-  const dispatch = useDispatch();
-  const [bookedTickets, setBookedTickets] = useState([]);
+//import { useNavigate } from "react-router-dom";
 
-  const handleBookedTicket = (ticket) => {
+const Ticket = ({ event,tickets }) => {
+  //const navigate=useNavigate()//for routing
+  //(below)=> retrieves the current logged in user
+  const loggedInUser = useSelector((state) => state.loginUser.loginDetails.user);
+  const dispatch = useDispatch();
+  console.log(loggedInUser.id)
+  const [isBookedMap, setIsBookedMap] = useState({});
+
+
+  //const [bookedTickets, setBookedTickets] = useState([]);
+  /*const handleBookedTicket = (ticket) => {
     setBookedTickets([...bookedTickets, ticket,event.name]);
     // Dispatch the action to add the ticket to the Redux store
     dispatch(addBookedTicket(ticket));
     navigate(`/BookedTickets`)
+  };*/
+
+  const handleBookedTicket = async (ticket) => {
+    const updatedTicket = { ...ticket, event: event.name }; // Include the event name
+    //setIsbooked(!isbooked);
+    //this one checks each individual ticket
+    setIsBookedMap((prevState) => ({
+      ...prevState,
+      [ticket.id]: !prevState[ticket.id]
+    }));
+
+    dispatch(addBookedTicket(updatedTicket));
+    const bookedTicketBody={
+      user_id: loggedInUser.id,
+      ticket_id: updatedTicket.id, 
+    }
+    try {
+      const userTicketUrl = "http://127.0.0.1:3000/booked_tickets/post";
+      const response = await fetch(userTicketUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookedTicketBody)
+      });
+  
+      // Log the response data for debugging
+      console.log("API Response:", response);
+  
+    } catch (error) {
+      console.error("Error booking ticket:", error);
+    }
+    
   };
   return (
     <>
@@ -27,9 +66,9 @@ const Ticket = ({ event,tickets }) => {
           </div>
           <br />
           <button onClick={() => handleBookedTicket(ticket)}>
-            Book Ticket
+          {!isBookedMap[ticket.id] ? "Get Ticket" : "Booked"}
           </button>
-        </div>
+          </div>
       ))}
     </>
   );

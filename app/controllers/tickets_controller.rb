@@ -6,7 +6,8 @@ class TicketsController < ApplicationController
     tickets = find_event_tickets
     render json: tickets, status: :ok
   end
-
+  
+  
   private
 
   def find_event_tickets
