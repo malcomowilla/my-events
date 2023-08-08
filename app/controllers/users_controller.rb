@@ -28,7 +28,7 @@ def profile
             session[:user_id] = user.id
 
             token = encode_token( user_id: user.id) 
-                UserMailer.welcome_email(user).deliver_now
+            UserMailer.welcome_back_email(user).deliver_now
 
             render json: {user: UserSerializer.new(user), jwt: token}, status: :accepted
         else

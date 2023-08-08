@@ -43,6 +43,7 @@ class OrganizersController < ApplicationController
       if organizer && organizer.authenticate(params[:password])
         session[:organizer_id] = organizer.id
         token = encode_token(organizer_id: organizer.id) 
+        OrganizerMailer.welcome_back_email(organizer).deliver_now
         render json: { user: OrganizerSerializer.new(organizer), jwt: token }, status: :accepted
       else
         render json: { message: 'Invalid username or password', error: 'Authentication failed' }, status: :unauthorized
