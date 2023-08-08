@@ -9,8 +9,7 @@ def profile
     def create_user
         user = User.create(user_params)
     if user.valid?
-         puts "User created successfully!"
-    puts user.inspect
+         
         token = encode_token({user_id: user.id})
                 UserMailer.welcome_email(user).deliver_now
 
@@ -24,7 +23,9 @@ def profile
     #login login POST   /login(
     def create
         user = User.find_by(username: params[:username] )
+
         if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
 
             token = encode_token( user_id: user.id) 
                 UserMailer.welcome_email(user).deliver_now
@@ -35,6 +36,10 @@ def profile
         end
     end
 
+def destroy
+    session.delete :user_id
+    head :no_content
+end
 
     
 
