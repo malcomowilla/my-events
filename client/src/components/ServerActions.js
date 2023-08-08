@@ -52,6 +52,37 @@ export const NewUser=(userDetails)=> async (dispatch) => {
 
   
 }
+//NewOrganizer handles posting of a new organizer to the database
+export const ORGANIZER_SIGNUP_REQUEST = "ORGANIZER_SIGNUP_REQUEST";
+export const ORGANIZER_SIGNUP_SUCCESS = "ORGANIZER_SIGNUP_SUCCESS";
+export const ORGANIZER_SIGNUP_FAILURE = "ORGANIZER_SIGNUP_FAILURE";
+
+
+export const NewOrganizer=(organizerDetails)=> async (dispatch) => {
+  try {
+    const oSignUpUrl="http://127.0.0.1:3000/signup-o" ;
+    const response = await fetch(oSignUpUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify(organizerDetails), // Convert the userData to JSON string and send it in the request body
+    });
+    if (response.ok) {
+      
+      
+      dispatch({ type: "ORGANIZER_SIGNUP_SUCCESS", payload: organizerDetails });
+    } else {
+      
+      dispatch({ type: "ORGANIZER_SIGNUP_FAILURE", payload: "Error signing up." });
+    }
+  } catch (error) {
+    
+    dispatch({ type: "ORGANIZER_SIGNUP_FAILURE", payload: error.message });
+  }
+
+  
+}
  //handles login => login is a post request
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -78,6 +109,33 @@ export const LoginUser = loginDetails => async dispatch => {
     dispatch({ type: LOGIN_FAILURE, payload: "Error signing in." });
   }
 };
+//handles organizer login
+ //handles login => login is a post request
+ export const ORGANIZER_LOGIN_REQUEST = "ORGANIZER_LOGIN_REQUEST";
+ export const ORGANIZER_LOGIN_SUCCESS = "ORGANIZER_LOGIN_SUCCESS";
+ export const ORGANIZER_LOGIN_FAILURE = "ORGANIZER_LOGIN_FAILURE";
+ export const O_LOGOUT = "O_LOGOUT";
+ export const LoginOrganizer = organizerLoginDetails => async dispatch => {
+   try {
+     const oLoginUrl = "http://127.0.0.1:3000/login-o";
+     const response = await fetch(oLoginUrl, {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json"
+       },
+       body: JSON.stringify(organizerLoginDetails)
+     });
+ 
+     if (response.ok) {
+       const organizerData = await response.json();
+       dispatch({ type: ORGANIZER_LOGIN_SUCCESS, payload: organizerData });
+     } else {
+       dispatch({ type: ORGANIZER_LOGIN_FAILURE, payload: "Invalid username or password" });
+     }
+   } catch (error) {
+     dispatch({ type: ORGANIZER_LOGIN_FAILURE, payload: "Error signing in." });
+   }
+ };
 //get user tickets
 export const FETCH_TICKETS_SUCCESS ="FETCH_TICKETS_SUCCESS";
 export const FETCH_TICKETS_FAILURE ="FETCH_TICKETS_FAILURE";

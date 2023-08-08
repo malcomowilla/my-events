@@ -11,7 +11,7 @@ const Home=()=>{
      navigate("/events")
   }
   const eventsCRUD=()=>{
-    navigate("/Organizer")
+    navigate("/Organiser")
   }
   // Limit the events to 6 
   const homePageEvents = events.slice(0, 6);

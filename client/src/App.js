@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { FetchEvents } from "./components/ServerActions"; //coz it's not the only component in EventActions
 import Login from "./components/Login";
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 import EventDetails from "./components/EventDetails";
 import TicketCart from "./components/TicketCart";
-import Organizer from "./components/Organizer";
+import Organiser from "./components/Organiser";
 import AuthProvider from "./providers/Auth.provider";
 import { useAuthContext } from "./providers/Auth.provider";
 //import { Navigate } from "react-router-dom";
@@ -74,7 +74,7 @@ function App() {
         <Route path="/login" element={<BaseRoute component={Login}/>}></Route>
         <Route path="/EventDetails/:id" element={<SecureRoute component={EventDetails} />} />
         <Route path="/BookedTickets" element={<BaseRoute component={TicketCart} />}></Route>
-        <Route path="/Organizer" element={<SecureRoute component={Organizer}/>}></Route>
+        <Route path="/Organiser" element={<SecureRoute component={Organiser}/>}></Route>
       </Routes>
       {/*</AuthProvider>*/}
     </BrowserRouter>
