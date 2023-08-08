@@ -14,9 +14,9 @@ const NavBar = () => {
      <Link to="/events">
         Events
      </Link>{" "}
-     {/*<Link to="/BookedTickets">
+     <Link to="/BookedTickets">
         Cart
-     </Link>{" "}*/}
+     </Link>{" "}
      <Link to="/Organizer" >
         Organizer
      </Link>{" "}

@@ -1,7 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 //import { removeBookedTicket } from "../Reducers/ticketActions";
 //import { useNavigate } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
@@ -9,12 +9,22 @@ import { useDispatch } from "react-redux";
 const TicketCart = () => {
     //const dispatch = useDispatch();
     //const navigate=useNavigate()
-    const loggedInUser = useSelector(state => state.loginUser.loginDetails.user);
+   // const [loggedInUser,setLoggedInUser] = useState(useSelector(state => state.loginUser.loginDetails.user));
+   
+   const [loggedInUser, setLoggedInUser] = useState(null); // Initialize with null
+   
+   useEffect(() => {
+       const storedUser = localStorage.getItem('loggedInUser');
+       if (storedUser) {
+           setLoggedInUser(JSON.parse(storedUser));
+       }
+   }, []);
+   console.log("this is the logged in as being accessed in ticketCart",loggedInUser)
+
     const [ticketCounts, setTicketCounts] = useState([]);
     const [ticketPrices, setTicketPrices] = useState([]);
-    const [fetchedTickets,setFetchedTickets]=useState([])
-    
-    console.log("this is my fetchedTickets (declared)",fetchedTickets,fetchedTickets.length)
+    const [fetchedTickets,setFetchedTickets]=useState([]);
+   console.log("this is my fetchedTickets (declared)",fetchedTickets,fetchedTickets.length)
    
     useEffect(() => {
         const fetchBookedTickets = async () => {
