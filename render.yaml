@@ -5,7 +5,7 @@ databases:
 
 services:
   - type: web
-    name: lambistic-events
+    name: jibambe-events
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
