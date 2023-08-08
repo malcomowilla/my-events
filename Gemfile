@@ -1,7 +1,11 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+<<<<<<< HEAD
 # ruby '3.2.1'
+=======
+ruby '3.0.2'
+>>>>>>> d06928f (pg gem->PostgreSQL)
 
 ruby File.read('.ruby-version').strip
 
@@ -16,7 +20,7 @@ gem "sqlite3", "~> 1.4"
 gem 'rack-cors'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-gem 'pg'
+gem "pg",'~>1.5.3' 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
