@@ -14,6 +14,7 @@ import TicketCart from "./components/TicketCart";
 import Organizer from "./components/Organizer";
 import AuthProvider from "./providers/Auth.provider";
 import { useAuthContext } from "./providers/Auth.provider";
+//import { Navigate } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 
 const SecureRoute = ({ component: Component, ...rest }) => {
@@ -37,6 +38,21 @@ const BaseRoute = ({ component: Component }) => { // Using destructuring here
     </AuthProvider>
   );
 };
+/*const PrivateTicketCartRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
+
+  return (
+      <TicketCart
+          {...rest}
+          render={props =>
+              isAuthenticated ? <Component {...props} /> : <Navigate to="/login" />
+          }
+      />
+  );
+};*/
+
+
+
 function App() {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events);
