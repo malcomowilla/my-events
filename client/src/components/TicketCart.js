@@ -2,19 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { removeBookedTicket } from "../Reducers/ticketActions";
+//import { removeBookedTicket } from "../Reducers/ticketActions";
+//import { useNavigate } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 
 const TicketCart = () => {
-    //const navigate = useNavigate();
-    //const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
-    /*const toLogin=(
-        navigate('/login')
-    )*/
+    //const dispatch = useDispatch();
+    //const navigate=useNavigate()
     const loggedInUser = useSelector(state => state.loginUser.loginDetails.user);
-    //const bookedTickets=useSelector(state => state.tickets.bookedTickets);
-   // const authToken=useSelector(state => state.loginUser.jwt)
-    const dispatch = useDispatch();
     const [ticketCounts, setTicketCounts] = useState([]);
     const [ticketPrices, setTicketPrices] = useState([]);
     const [fetchedTickets,setFetchedTickets]=useState([])
@@ -88,16 +83,52 @@ const TicketCart = () => {
         }
     };
 
-    useEffect(() => {
+   /* useEffect(() => {
         const updatedPrices = ticketCounts.map((count, index) => count * fetchedTickets[index].price);
+        setTicketPrices(updatedPrices);
+    }, [ticketCounts, fetchedTickets]);*/
+
+    useEffect(() => {
+        const updatedPrices = ticketCounts.map((count, index) => {
+            if (index >= 0 && index < fetchedTickets.length) {
+                return count * fetchedTickets[index].price;
+            }
+            return 0; // Return 0 for indices out of bounds
+        });
         setTicketPrices(updatedPrices);
     }, [ticketCounts, fetchedTickets]);
 
     const totalPrice = ticketPrices.reduce((total, price) => total + price, 0);
     
-    const removeTicket = (ticket) => {
-        dispatch(removeBookedTicket(ticket));
-    }
+    const [deletingTicket, setDeletingTicket] = useState(null);
+
+    const removeTicket = async (ticket) => {
+        console.log("remove/delete button clicked");
+        try {
+            setDeletingTicket(ticket); // Set the ticket that is being deleted
+            const response = await fetch(`http://127.0.0.1:3000/booked_tickets/delete/${loggedInUser.id}/${ticket.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                // Remove the ticket from the fetchedTickets array
+                const updatedFetchedTickets = fetchedTickets.filter(
+                    (fetchedTicket) => fetchedTicket.id !== ticket.id
+                );
+                setFetchedTickets(updatedFetchedTickets);
+                setDeletingTicket(null); // Clear the deleting ticket
+            } else {
+                console.error('Failed to remove ticket');
+                setDeletingTicket(null); // Clear the deleting ticket in case of error
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setDeletingTicket(null); // Clear the deleting ticket in case of error
+        }
+    };
     
     return (
         <>
@@ -115,7 +146,7 @@ const TicketCart = () => {
                         <button onClick={() => addTicket(index)}>+</button>
                         <p>Tickets: {ticketCounts[index]}</p>
                         <p>Total: Ksh{ticketPrices[index]}</p>
-                        <button onClick={() => removeTicket(ticket)}>Remove</button>
+                        <button onClick={() => removeTicket(ticket,loggedInUser)} disabled={deletingTicket === ticket}>Remove</button>
                     </div>
                 ))
             ) : (

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     collection do
       get '/get/:id', to: 'booked_tickets#get'
       post :post
-      delete '/delete/:id', to: 'booked_tickets#delete'
+      delete '/delete/:user_id/:ticket_id', to: 'booked_tickets#delete'
     end
   end
 

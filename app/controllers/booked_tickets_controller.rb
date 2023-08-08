@@ -29,19 +29,22 @@ class BookedTicketsController < ApplicationController
     end
    
    
-    #delete DELETE /booked_tickets/delete/id
+    #delete DELETE  delete '/delete/:user_id/:ticket_id'
     def delete
-        user = @current_user # Assuming you have a method to get the currently logged-in user
-
-        ticket = Ticket.find(params[:ticket_id])
-        booked_ticket = BookedTicket.find_by(user: user, ticket: ticket)
-        
-        if booked_ticket.destroy
+      user_id = params[:user_id]
+      ticket_id = params[:ticket_id]
+  
+      # Find the user and ticket
+      user = User.find(user_id)
+      ticket = Ticket.find(ticket_id)
+      booked_ticket = BookedTicket.find_by(user: user, ticket: ticket)
+  
+      if booked_ticket.destroy
           render json: { message: "Ticket successfully removed" }, status: :ok
-        else
+      else
           render json: { error: "Failed to remove ticket" }, status: :unprocessable_entity
-        end
-    end
+      end
+  end
 
     private
     def set_current_user
