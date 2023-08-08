@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { FetchEvents } from "./components/ServerActions"; //coz it's not the only component in EventActions
 import Login from "./components/Login";
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 import EventDetails from "./components/EventDetails";
 import TicketCart from "./components/TicketCart";
 import Organiser from "./components/Organiser";

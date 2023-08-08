@@ -43,7 +43,7 @@ const Login=()=>{
             type="text"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            
+            required
           />
         </div>
         <h4>Password</h4>
@@ -52,7 +52,7 @@ const Login=()=>{
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            
+            required
           />
         </div>
         <button type="submit">

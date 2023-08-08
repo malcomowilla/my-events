@@ -23,7 +23,7 @@ const Home=()=>{
           </h2>
           <br />{" "}
           <p>Do you have events you want to share with us?
-            Host them with us here:<button onClick={eventsCRUD}>Organiser</button>
+            Host them with us here:<button onClick={eventsCRUD}>Organizer</button>
           </p>
           <button onClick={allEvents}>
             See more events...

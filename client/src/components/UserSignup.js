@@ -6,7 +6,7 @@ import { useDispatch,useSelector } from "react-redux";
 import {  SIGNUP_SUCCESS } from "./ServerActions";
 import { NewUser } from "./ServerActions";
 
-export default function SignUp() {
+export default function UserSignUp() {
   const dispatch = useDispatch();
   
 
@@ -41,7 +41,7 @@ export default function SignUp() {
 return(
     <>
       
-
+      <h2>User</h2>
       <form
         onSubmit={handleFormSubmit}
         className="border w-96 rounded-lg shadow-lg p-4 flex flex-col gap-4"
@@ -52,6 +52,7 @@ return(
           <input
             type="text"
             value={username}
+            required
             onChange={(event) => setUsername(event.target.value)}
             
           />
@@ -62,7 +63,7 @@ return(
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            
+            required
           />
         </div>
         <h4>Password</h4>
@@ -71,7 +72,7 @@ return(
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            
+            required
           />
         </div>
         <button type="submit">
