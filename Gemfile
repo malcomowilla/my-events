@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 gem 'rest-client'
 gem 'mime-types'
 gem 'jwt'
+gem 'dotenv-rails'
+
 #gem 'railties', '~> 7.0', '>= 7.0.6'
 # gem 'mime-types', '~> 3.3', '>= 3.3.1'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -64,7 +66,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "letter_opener"
-gem 'dotenv-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
