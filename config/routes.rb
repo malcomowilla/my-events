@@ -10,7 +10,13 @@ Rails.application.routes.draw do
 
   get 'events/:id/tickets', to: 'tickets#specific_tickets'
   delete '/logout', to: 'users#destroy'
-
+  #routes for organizers
+  post '/signup-o', to: 'organizers#signup_organizer'
+  post '/login-o', to: 'organizers#login_organizer'
+  resources :organizers do
+    resources :events, only: [:create]
+    
+  end
   #routes for booked tickets
 
   resources :booked_tickets, only: [] do
@@ -25,7 +31,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :organizers do
-    resources :events, only: [:create]
-  end
+  
 end

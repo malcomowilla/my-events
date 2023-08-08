@@ -22,7 +22,7 @@ class OrganizersController < ApplicationController
   skip_before_action :authorized, only: [:create_user]
 
     
-
+    #post '/signup-O', to: 'organizers#signup_organizer'
     def signup_organizer
         organizer = Organizer.create(organizer_params)
        if organizer.valid?
@@ -33,11 +33,11 @@ class OrganizersController < ApplicationController
         render json: {organizer: OrganizerSerializer.new(organizer), jwt: token}, status: :created
         else
             puts "Failed to create organizer!"
-    puts user.errors.full_messages
+    puts organizer.errors.full_messages
       render json: { error: 'failed to create organizer' }, status: :unprocessable_entity
     end
     end 
-    #login login POST   /login(
+    #login login POST   /login-o(
     def login_organizer
         organizer = Organizer.find_by(name: params[:name] )
 
@@ -60,7 +60,7 @@ class OrganizersController < ApplicationController
 
   private
   def organizer_params
-    params.permit(:name, :password, :email)
+    params.permit(:name, :password, :email, :image)# ,:contact_number)
     end
 
   def event_params
@@ -68,4 +68,3 @@ class OrganizersController < ApplicationController
   end
 end
 
-end
