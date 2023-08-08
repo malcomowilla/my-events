@@ -4,6 +4,7 @@ import userReducer from './UserReducer';
 import loginReducer from './loginReducer';
 import ticketReducer from './ticketReducer';
 import organizerReducer from './OrganizerReducer';
+import oLoginReducer from './OloginReducer';
 //import { fetchBkdTicketsReducer } from './ticketReducer';
 //import other reducers here
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   events: EventReducer,
   tickets: ticketReducer,
   organizer: organizerReducer,
+  loginOraganizer:oLoginReducer,
   //bookedTickets: fetchBkdTicketsReducer,
 });
 
