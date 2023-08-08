@@ -44,7 +44,9 @@ const EventDetails = () => {
   const toLogin=()=>{
    navigate("/login")
   }
-
+  const toCart=()=>{
+    navigate("/BookedTickets")
+  }
   if (!isAuthenticated) {
     return (
       <>
@@ -70,7 +72,13 @@ const EventDetails = () => {
           </div>
         </>
       )}
+      <div>
+      {" "}
+      <button onClick={toCart}>Go to Cart</button>
+      {" "}
+      </div>
       <Ticket tickets={tickets} event={event} />
+     
     </>
   );
 }

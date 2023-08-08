@@ -19,6 +19,7 @@ const Login=()=>{
 
    
     dispatch(LoginUser(loginDetails));
+    
     }
   const handleLogOut=()=>{
     // After dispatching logout action
@@ -68,3 +69,4 @@ const Login=()=>{
 )
 }
 export default Login;
+

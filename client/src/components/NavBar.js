@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+   
   return (
     <>
      <Link to="/">
@@ -16,7 +17,7 @@ const NavBar = () => {
      <Link to="/BookedTickets">
         Cart
      </Link>{" "}
-     <Link to="/Organizer">
+     <Link to="/Organizer" >
         Organizer
      </Link>{" "}
      {/*<Link to="/">
