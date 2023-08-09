@@ -11,12 +11,15 @@ const Organiser=()=> {
            setLoggedInOrganizer(JSON.parse(storedUser));
        }
    }, []);
-   console.log(loggedInOrganizer);
+  
+   const organizerId=loggedInOrganizer.user.id
+   
+   console.log(organizerId);
   const [errorMsg, setErrorMsg] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
-
+  
   useEffect(() => {
     const getEvent = async () => {
       const response = await fetch(
@@ -28,12 +31,13 @@ const Organiser=()=> {
     getEvent();
   }, [id]);
 
-  const handleUpdateEvent = async (eventDetails) => {
+  const handleSubmit = async (eventDetails) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/events/${id}`,
+        // POST   /events/:organizer_id
+        `http://localhost:3000/events/${organizerId}`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -65,7 +69,7 @@ const Organiser=()=> {
           isUpdatePage={true}
           eventData={event}
           errorMsg={errorMsg}
-          handleSubmit={handleUpdateEvent}
+          handleSubmit={handleSubmit}
         />
       ) : (
         <p>Loading event...</p>

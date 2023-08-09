@@ -62,7 +62,7 @@ class OrganizersController < ApplicationController
     end
 
   def event_params
-    params.require(:event).permit(:name, :image_url, :date, :description, :location)
+    params.require(:event).permit(:name, :description, :location, :date, :image, :capacity, :organizer_id)
   end
 end
 
