@@ -21,6 +21,7 @@ class EventsController < ApplicationController
            render json: {error: "Event not found"}, status: :not_found
        end
    end
+   # POST   /events/:organizer_id
    def create_event
     organizer = Organizer.find_by(id: params[:organizer_id])
 
