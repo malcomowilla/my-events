@@ -5,8 +5,10 @@ import { O_LOGOUT } from "../components/ServerActions";
 export const loginOrganizer = {
   isAuthenticated: false,
   organizerLoginDetails: null,
- 
+  error: null,
+  loading: false
 };
+
 export const logoutOrganizer = () => {
   return {
     type: O_LOGOUT,
@@ -37,6 +39,7 @@ const oLoginReducer = (state = loginOrganizer, action) => {
         organizerLoginDetails: null,
         //user_id: null, // Reset user_id
         error: action.payload,
+        
         loading: false,
       };
       case O_LOGOUT:

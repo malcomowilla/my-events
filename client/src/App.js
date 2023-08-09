@@ -74,7 +74,7 @@ function App() {
         <Route path="/login" element={<BaseRoute component={Login}/>}></Route>
         <Route path="/EventDetails/:id" element={<SecureRoute component={EventDetails} />} />
         <Route path="/BookedTickets" element={<BaseRoute component={TicketCart} />}></Route>
-        <Route path="/Organiser" element={<SecureRoute component={Organiser}/>}></Route>
+        <Route path="/Organizer" element={<SecureRoute component={Organiser}/>}></Route>
       </Routes>
       {/*</AuthProvider>*/}
     </BrowserRouter>

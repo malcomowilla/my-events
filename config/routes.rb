@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   #routes for organizers
   post '/signup-o', to: 'organizers#signup_organizer'
   post '/login-o', to: 'organizers#login_organizer'
+  #post events
+  post 'events/:organizer_id',to: 'events#create_event'
   resources :organizers do
     resources :events, only: [:create]
-    
+   # post '/organizers/:organizer_id/events', to: 'organizers#create_event'
   end
   #routes for booked tickets
 

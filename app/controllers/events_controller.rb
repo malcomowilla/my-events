@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     skip_before_action :authorized, only: [:create_user]
 
    def index
-       events=Event.all
+       events=Event.all.reverse
        render json: events, each_serializer: EventSerializer, status: :ok
    end
 
@@ -21,21 +21,23 @@ class EventsController < ApplicationController
            render json: {error: "Event not found"}, status: :not_found
        end
    end
-       
-   # POST /events
-   def create
-       # get the body of the event to be created
-       event = Event.create(event_params)
-   
-       # check whether the event is valid => valid
-       if event.valid?
-           # add the events to the db if its valid
-           render json: event, status: :accepted
-       else
-           # throw an unprocessable entity error the user
-           render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
-       end
-   end
+   # POST   /events/:organizer_id
+   def create_event
+    organizer = Organizer.find_by(id: params[:organizer_id])
+
+    if organizer
+      event = Event.new(event_params)
+      event.organizer = organizer
+
+      if event.save
+        render json: event, status: :created
+      else
+        render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Organizer not found' }, status: :not_found
+    end
+  end
 
    # PUT/PATCH /events/{id}
    def update
