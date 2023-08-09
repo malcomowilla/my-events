@@ -10,8 +10,8 @@ const Home=()=>{
   const allEvents=()=>{
      navigate("/events")
   }
-  const eventsCRUD=()=>{
-    navigate("/Organiser")
+  const toSignUp=()=>{
+    navigate("/signUp")
   }
   // Limit the events to 6 
   const homePageEvents = events.slice(0, 6);
@@ -23,7 +23,7 @@ const Home=()=>{
           </h2>
           <br />{" "}
           <p>Do you have events you want to share with us?
-            Host them with us here:<button onClick={eventsCRUD}>Organizer</button>
+            Sign up <button onClick={toSignUp}>here</button> as an organizer to host them with us!
           </p>
           <button onClick={allEvents}>
             See more events...

@@ -12,6 +12,7 @@ const NavBar = () => {
            setLoggedInOrganizer(JSON.parse(storedUser));
        }
    }, []);
+   console.log("this is the logged in ORGANIZER as being accessed in Navbar",loggedInOrganizer)
    //check if user is logged in 
    const [loggedInUser, setLoggedInUser] = useState(null); // Initialize with null
    
@@ -21,7 +22,7 @@ const NavBar = () => {
            setLoggedInUser(JSON.parse(storedUser));
        }
    }, []);
-   console.log("this is the logged in as being accessed in ticketCart",loggedInUser)
+   console.log("this is the logged in USER as being accessed in Navbar",loggedInUser)
 
   return (
     <>
