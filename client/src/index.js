@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configureStore,/* applyMiddleware*/ } from '@reduxjs/toolkit';
+import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './Reducers/rootReducers';
 import './index.css';
