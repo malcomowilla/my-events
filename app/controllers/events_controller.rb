@@ -22,7 +22,7 @@ class EventsController < ApplicationController
        end
    end
        
-   # POST /events
+   # POST /eventsPOST   /events(.:format)      events#create
    def create
        # get the body of the event to be created
        event = Event.create(event_params)

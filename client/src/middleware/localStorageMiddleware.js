@@ -6,6 +6,10 @@ const localStorageMiddleware = store => next => action => {
         localStorage.setItem('loggedInUser', JSON.stringify(state.loginUser.loginDetails.user));
     } else if (action.type === 'LOGOUT') {
         localStorage.removeItem('loggedInUser');
+    } else if(action.type === 'ORGANIZER_LOGIN_SUCCESS'){
+        localStorage.setItem('loggedInOrganizer',JSON.stringify(state.loginOrganizer.organizerLoginDetails.user));
+    } else if(action.type === ' O_LOGOUT'){
+        localStorage.removeItem('loggedInOrganizer')
     }
 
     return result;

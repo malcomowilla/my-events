@@ -3,6 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import EventForm from "./EventForm";
 
 const Organiser=()=> {
+  const [loggedInOrganizer, setLoggedInOrganizer] = useState(null); // Initialize with null
+   
+   useEffect(() => {
+       const storedUser = localStorage.getItem('loggedInOrganizer');
+       if (storedUser) {
+           setLoggedInOrganizer(JSON.parse(storedUser));
+       }
+   }, []);
+   console.log(loggedInOrganizer);
   const [errorMsg, setErrorMsg] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -44,17 +53,30 @@ const Organiser=()=> {
     }
   };
 
+  const toLogin=()=>{
+    navigate("/login")
+  }
+
   return (
     <>
-      {event && (
+    {loggedInOrganizer ? (
+      event ? (
         <EventForm
           isUpdatePage={true}
           eventData={event}
           errorMsg={errorMsg}
           handleSubmit={handleUpdateEvent}
         />
-      )}
-    </>
+      ) : (
+        <p>Loading event...</p>
+      )
+    ) : (
+      <>
+      <p>Please log in to update the event.</p>
+      <button onClick={toLogin}>Login</button>
+      </>
+    )}
+  </>
   );
 }
 export default Organiser;
