@@ -12,7 +12,7 @@ const Organiser=()=> {
        }
    }, []);
   
-   const organizerId=loggedInOrganizer.user.id
+   const organizerId = loggedInOrganizer && loggedInOrganizer.user.id;
    
    console.log(organizerId);
   const [errorMsg, setErrorMsg] = useState("");
@@ -23,7 +23,7 @@ const Organiser=()=> {
   useEffect(() => {
     const getEvent = async () => {
       const response = await fetch(
-        `http://localhost:3000/events/${id}`
+        `http://localhost:3000/events/${organizerId}`
       );
       const data = await response.json();
       setEvent(data);
