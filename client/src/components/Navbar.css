@@ -4,7 +4,7 @@
   justify-content: space-between; /* Distribute items evenly along the main axis */
   align-items: center; /* Align items vertically */
   padding: 1rem 2rem;
-  background: url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover; /* Add your image path */
+  background:rgb(34,38,99) ; /* Add your image path */
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 

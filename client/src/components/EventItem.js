@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import './EventItem.css'
 import { useAuthContext } from "../providers/Auth.provider";
 const EventItem = (props) => {
   const event = props.event;
@@ -17,18 +18,20 @@ const EventItem = (props) => {
   };
 
   return (
-    <div key={event.id}>
-      <h2>{event.name}</h2>
+    <div className="card-basic" key={event.id}>
       <img src={event.image_url} alt={event.name} />
+        <div className="card-item-details">
+          <div className="item-title">
+              <h3>{event.name}</h3>
+          </div>         
       <p>{event.description}</p>
       <p>{event.location}</p>
       <p>{event.date}</p>
-      <p>
-        See more
-        <br />{" "}
-        <button onClick={details}>Details</button>
-      </p>
+     <div className="card-button">
+      <button onClick={details}>Details</button>
+      </div>             
     </div>
+   </div>
   );
 };
 
