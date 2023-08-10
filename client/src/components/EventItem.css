@@ -1,0 +1,85 @@
+.fa-heart
+{
+    overflow: hidden;
+    color: var(--red-color);
+}
+
+.added-to-wishlist-btn
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: 50%;
+    margin: 0.8rem 1.1rem 0 0;
+}
+
+.added-to-wishlist-btn:hover
+{
+    background-color: var(--grey);
+}
+/* EventItem.css */
+
+.card-basic {
+  flex: calc(50% - 10px); /* Display two cards in a row with a gap */
+  background:rgb(34,38,99) ; /* Add your image path */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-basic:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-basic img {
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-item-details {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.item-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--royal-blue);
+}
+
+.card-item-details p {
+  margin-bottom: 0.5rem;
+  color: var(--grey);
+}
+
+.card-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.card-button button {
+  background-color: var(--sky-blue);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card-button button:hover {
+  background-color: var(--royal-blue);
+  transform: scale(1.05);
+}
