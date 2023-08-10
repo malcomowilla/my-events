@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   title: MyString
   date: 2023-07-31
   location: MyString
@@ -11,3 +12,17 @@ two:
   date: 2023-07-31
   location: MyString
   description: MyText
+=======
+  event_id: MyString
+  user_id: MyString
+  ticket_type: MyString
+  price: 1
+  purchased_date: MyString
+
+two:
+  event_id: MyString
+  user_id: MyString
+  ticket_type: MyString
+  price: 1
+  purchased_date: MyString
+>>>>>>> e26ee1632b497caf8f6d1ab5d802c5ada2481571
