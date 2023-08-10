@@ -130,7 +130,8 @@ num_organizers.times do
     name: name,
     email: email,
     contact_number: contact_number,
-    image: images_for_event_organizers.sample
+    image: images_for_event_organizers.sample,
+    password: "1234"
   )
 
   organizers << organizer
