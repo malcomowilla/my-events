@@ -3,15 +3,27 @@ import { useNavigate, useParams } from "react-router-dom";
 import EventForm from "./EventForm";
 
 const Organiser=()=> {
+  const [loggedInOrganizer, setLoggedInOrganizer] = useState(null); // Initialize with null
+   
+   useEffect(() => {
+       const storedUser = localStorage.getItem('loggedInOrganizer');
+       if (storedUser) {
+           setLoggedInOrganizer(JSON.parse(storedUser));
+       }
+   }, []);
+  
+   const organizerId = loggedInOrganizer && loggedInOrganizer.user.id;
+   
+   console.log(organizerId);
   const [errorMsg, setErrorMsg] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState(null);
-
+  
   useEffect(() => {
     const getEvent = async () => {
       const response = await fetch(
-        `http://localhost:3000/events/${id}`
+        `http://localhost:3000/events/${organizerId}`
       );
       const data = await response.json();
       setEvent(data);
@@ -19,12 +31,13 @@ const Organiser=()=> {
     getEvent();
   }, [id]);
 
-  const handleUpdateEvent = async (eventDetails) => {
+  const handleSubmit = async (eventDetails) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/events/${id}`,
+        // POST   /events/:organizer_id
+        `http://localhost:3000/events/${organizerId}`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -44,17 +57,30 @@ const Organiser=()=> {
     }
   };
 
+  const toLogin=()=>{
+    navigate("/login")
+  }
+
   return (
     <>
-      {event && (
+    {loggedInOrganizer ? (
+      event ? (
         <EventForm
           isUpdatePage={true}
           eventData={event}
           errorMsg={errorMsg}
-          handleSubmit={handleUpdateEvent}
+          handleSubmit={handleSubmit}
         />
-      )}
-    </>
+      ) : (
+        <p>Loading event...</p>
+      )
+    ) : (
+      <>
+      <p>Please log in to update the event.</p>
+      <button onClick={toLogin}>Login</button>
+      </>
+    )}
+  </>
   );
 }
 export default Organiser;

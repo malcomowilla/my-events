@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  resources :attendees, only: [:index, :show, :create]
+  resources :tickets, only: [:index, :show, :create]
+  resources :events, only: [:index, :show, :create]
+=======
   #resources :booked_tickets
   resources :tickets
   resources :attendees
@@ -13,9 +18,11 @@ Rails.application.routes.draw do
   #routes for organizers
   post '/signup-o', to: 'organizers#signup_organizer'
   post '/login-o', to: 'organizers#login_organizer'
+  #post events
+  post 'events/:organizer_id',to: 'events#create_event'
   resources :organizers do
     resources :events, only: [:create]
-    
+   # post '/organizers/:organizer_id/events', to: 'organizers#create_event'
   end
   #routes for booked tickets
 
@@ -32,4 +39,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
+>>>>>>> e26ee1632b497caf8f6d1ab5d802c5ada2481571
 end

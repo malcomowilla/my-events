@@ -1,9 +1,9 @@
 import { useState } from "react";
-const EventForm=(
-  isUpdatePage = false,
+const EventForm=({
+  isUpdatePage,
   eventData = undefined,
   errorMsg,
-  handleSubmit,
+  handleSubmit,}
 )=>{
 //sign up as an organizer,
 //login as an organizer,
@@ -38,7 +38,7 @@ const [name, setName] = useState(eventData?.title || "");
         method="post"
       >
         <h1 className="text-center text-2xl text-rose-600 uppercase">
-          {isUpdatePage ? "Update this event" : "Create a new event"}
+          {isUpdatePage ?   "Create a new event":"Update this event"}
         </h1>
         {errorMsg && (
           <p className="text-center text-xl text-red-500">{errorMsg}</p>
@@ -102,7 +102,7 @@ const [name, setName] = useState(eventData?.title || "");
           className="bg-rose-600 rounded-lg w-48 p-3 mt-2 text-white hover:opacity-80 m-auto"
           
         >
-          {isUpdatePage ? "Update" : "Create"} Event
+          {isUpdatePage ? "Create" : "Update"} Event
         </button>
       </form>
     </div>
