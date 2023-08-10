@@ -1,4 +1,5 @@
 import React from "react";
+import './Navbar.css';
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 
@@ -25,19 +26,28 @@ const NavBar = () => {
    console.log("this is the logged in USER as being accessed in Navbar",loggedInUser)
 
   return (
-    <>
-     <Link to="/">
-        Home
+    <div className="top-bar">
+      <div className="left-topbar-container">
+      <Link to="/">
+      <div className="logo-container">
+      <img src="https://media.giphy.com/media/peAFQfg7Ol6IE/giphy.gif" alt="Logo" className="logo-image" />
+      <h3 className="top-bar-brand-name">Jibambe Events</h3>
+    </div>
+     </Link>
+      </div>
+       <div className="right-topbar-container">
+      <Link to="/">
+      <button className="icon-btn"> Home </button>
      </Link>{" "}
      <Link to="/signup">
-        Registration
+     <button className="icon-btn"> Registration </button>
      </Link>{" "}
      <Link to="/events">
-        Events
+     <button className="icon-btn"> Events </button>
      </Link>{" "}
      {loggedInUser && (
         <Link to="/BookedTickets">
-          Cart
+      <button className="icon-btn"> Cart </button>
         </Link>
       )}
       {" "}
@@ -50,8 +60,9 @@ const NavBar = () => {
      {/*<Link to="/">
         About
   </Link>{" "}*/}
-      
-    </>
+
+      </div>     
+    </div>
   );
 };
 
