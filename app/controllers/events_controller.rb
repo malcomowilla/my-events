@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     # skip_before_action :verify_authenticity_token, only: [:create]
-<<<<<<< HEAD
+
     protect_from_forgery with: :null_session
      def index
          events=Event.all
@@ -73,7 +73,7 @@ class EventsController < ApplicationController
          params.permit(:title, :description, :location,  :image, :capacity, :date)
      end
  end
-=======
+
     skip_before_action :authorized, only: [:create_user]
 
    def index
@@ -152,3 +152,4 @@ class EventsController < ApplicationController
        params.permit(:name, :image_url, :date, :description, :location)
    end
 end
+
