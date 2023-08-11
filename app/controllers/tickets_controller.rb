@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # app/controllers/tickets_controller.rb
 
 class TicketsController < ApplicationController
@@ -39,7 +39,9 @@ class TicketsController < ApplicationController
     end
   end
   
-=======
+
+  
+
 class TicketsController < ApplicationController
     # GET /tickets.:format) tickets#show
     # returns tickets related to a specific event
@@ -71,4 +73,3 @@ class TicketsController < ApplicationController
    tickets_by_type.values
   end
 end
->>>>>>> e26ee1632b497caf8f6d1ab5d802c5ada2481571

@@ -29,7 +29,7 @@ const Organiser=()=> {
       setEvent(data);
     };
     getEvent();
-  }, [id]);
+  }, [id, organizerId]);
 
   const handleSubmit = async (eventDetails) => {
     try {
@@ -84,3 +84,4 @@ const Organiser=()=> {
   );
 }
 export default Organiser;
+

@@ -53,10 +53,10 @@ description_list = [MountainBike, Gym, StreetPhotography, Gym, Run, Gym, Shovel,
                     Surf, Camp, Grasskii, Camp, Skate, IceRink, Sketch, Gym, Skydive, IceRink,
                     Golf, Opera, BMX, Gym, Football, Discussion, Run, Run, Skydive, Opera]
 
-url_for_events = ["https://shorturl.at/fpDJ8",
+url_for_events = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSklEmuzslxdlieZ96gxvp0KH4DNSmrfvNtWd9wsuetu5yWq0wrLzBl9XxNQxAX9XoevX4&usqp=CAU",
+  "https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUUYoCT8ccljHo2qaPidUJBJ4yaeGuDxhJaQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8NNVJmfrhf09RXC7tUk8FydsqFv6crlt04A&usqp=CAU",
-    "https://shorturl.at/borv2",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKweUn1N6qrw-QOhguCCvOzN7HId0yKNeKHQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR89AIQYhZpLBhII6i2cabuQUe12noW8lniog&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQldfvS7nwVs0Y9SpY-kC0jNCbnfOK2cBZj-g&usqp=CAU",
@@ -65,24 +65,24 @@ url_for_events = ["https://shorturl.at/fpDJ8",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIglK7Ga4AXiah5WNbXeKxv_75ywlxJwpBdg&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ANpWwQUMzx94MRNa_xVnSmONUx43JGscVQ&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRWPgizyEK-GIQczBzQW61bj7TKcv3EoNggg&usqp=CAU",
-    "https://shorturl.at/dtKS9",
-    "https://shorturl.at/isyNV",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjNblOL2_4FYVlxzxUNW34Xhl13E_wsLU7S_cdXgutgidjeVMTCqLHSUFUe6zptnc1MIc&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1m8GWrcJJsu4yUYtvXYnCU_Iq8vsrpGW0Hw8DrvOCBCe5zwK9d-DYMSs3KU0RlY097gg&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ANpWwQUMzx94MRNa_xVnSmONUx43JGscVQ&usqp=CAU",
-    "https://shorturl.at/yBRY4",
-    "https://shorturl.at/cswzC",
-    "https://shorturl.at/gqrGS",
-    "https://shorturl.at/ktJV8",
-    "https://shorturl.at/quyY8",
-    "https://shorturl.at/GOY06",
-    "https://shorturl.at/nvEX5",
-    "https://shorturl.at/bqrZ3",
-    "https://shorturl.at/yBMY4",
-    "https://shorturl.at/CGPTU",
-        "https://shorturl.at/jpLXY",
-        "https://shorturl.at/gnzH5",
-        "https://shorturl.at/ers58",
-        "https://shorturl.at/alyEU",
-        "https://shorturl.at/etxFM"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuB9lfT53clRBjgy45x95UTb8a_hkBsVBV-w&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrDzV9VgaLkjYBFwd548DTOMrspB0Mk4MFww&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_EdjHrcXroQAdsodpbmR6nHf-n_FfT9bOfg&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE7yRndGl0WgsVi4hCobynXkN4iWWMjUA4izeX_eLlm0h-6v4J0AqjUhK5bpBhcIkrm1g&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRabxv__fo7witiQQo8n9SOK0szAxoIPyOvA&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjKj3Qk83D8yCZhre4QtFv_970yRMgeZ77eg&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnjq31FSBPPaeVshQkhQAdC-rkN44FwKP7pQ&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9TDCZ72SFmsdoKvfz9RJfBahZbY8zXjBNUw&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9aY91_mpknOI4ucB3Kapqj2l8MnnFckQ0fQ&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLkgNkeZSq7Yb7vFkIVZZuqLE3Nj2qkjuUdF68NFR0opF-bGrb-PO3casooD5KA5-ORqw&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8CaHiaWXHxN-FyM1-p2bwgrd5h4GHV9Gb1g&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7pChE5UnrKNdsIfMju1Ug3Xa19NMoydq4tg&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLo4uoPJ80RW0iH4AW-lWCYCp2QouadC7lfqcHhWYEYlaygXQmJ1Qf1PZkmJEeV8MTZIo&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqAU2ulDL3f1OROrL3dNuR3M3gY4Ku6ww_2A&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2nvBqETT9L4UxZBTzrm3IxFo_Pg3_ijxGjA&usqp=CAU"
     ]
 
     
@@ -181,6 +181,7 @@ organizers.each do |organizer|
     #user: user, # Set user to nil
     event: event
   }
+  puts "Creating ticket with data: #{ticket_data}"  # Add this line for debugging
 
   Ticket.create!(ticket_data)
 end
