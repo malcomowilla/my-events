@@ -1,0 +1,40 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 2px solid black; /* Add a black outline */
+    background-color: rgb(34, 38, 99);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-block: 10px;
+}
+
+.search-bar:hover {
+    border-color: var(--dark-royal-blue); /* Darken the border color on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar-input {
+    outline: rgb(34, 38, 99);
+    font-family: inherit;
+    color: white; /* Change text color to white */
+    font-size: 16px;
+    flex: 1; /* Expand input to take available space */
+    padding: 10px;
+}
+
+#search-bar-btn {
+    border: none;
+    padding: 9px 15px;
+    background-color: var(--royal-blue);
+    color: white; /* Change text color to white */
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-bar-btn:hover {
+    background-color: rgb(0,0,0); /* Darken the button color on hover */
+}

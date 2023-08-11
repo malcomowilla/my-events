@@ -20,7 +20,6 @@ const EventList = () => {
 
   return (
     <div>
-      <h1>EVENTS LIST</h1>
       <SearchBar setSearchValue={setSearchValue} handleSearch={handleSearch}/>
        {filteredEvents.length > 0
        ? filteredEvents.map((event) => (
