@@ -60,7 +60,11 @@
 .card-item-details p {
   margin-bottom: 0.5rem;
   color: var(--grey);
+  font-size: 14px; /* Adjust the font size */
+  line-height: 1.5; /* Increase the line height for better readability */
+  opacity: 0.8; /* Reduce the opacity slightly for a subtle effect */
 }
+
 
 .card-button {
   display: flex;

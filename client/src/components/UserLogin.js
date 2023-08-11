@@ -31,7 +31,8 @@ const UserLogin=()=>{
   }
   return(
     <div className="user-auth-content-container">
-           <form onSubmit={handleFormSubmit} className="user-auth-form">
+        <form 
+        onSubmit={handleFormSubmit} className="user-auth-form">
         <label htmlFor="user-auth-input-password"><h2>Username</h2></label>
         <div className="user-auth-input-container">
           <input
