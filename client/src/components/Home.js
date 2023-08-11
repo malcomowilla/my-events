@@ -23,19 +23,18 @@ const Home=()=>{
         <div className='home-page-img-container'>
         <img className="home-page-background-img" src={CityIllustration} alt="Library Illustration"/>
         </div>
-      <h1 className='homepage-headings'>Highlights</h1>
-          <p>Do you have events you want to share with us?
-            Sign up <button onClick={toSignUp}>here</button> as an organizer to host them with us!
-          </p>
-          <button className="solid-secondary-btn homepage-explore-all-btn" onClick={allEvents}>
+          <button className="solid-success-btn form-user-auth-submit-btn" onClick={allEvents}>
             Explore All events
           </button>
-          <div>
+          <h4>Do you have events you want to share with us?
+             <button className="solid-success-btn form-user-auth-submit-btn" onClick={toSignUp}>Sign up</button> as an organizer to host them with us!
+          </h4>
+          {/* <div>
             {homePageEvents.map((event) => (
              <EventItem key={event.id} event={event} />
              
           ))}
-          </div>
+          </div> */}
         </div>
         
     )

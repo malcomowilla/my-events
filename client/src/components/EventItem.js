@@ -18,6 +18,10 @@ const EventItem = (props) => {
   };
 
   return (
+  <div className='products-container'>
+     <div className="products-card-grid">
+
+  
     <div className="card-basic" key={event.id}>
       <img src={event.image_url} alt={event.name} />
         <div className="card-item-details">
@@ -31,6 +35,8 @@ const EventItem = (props) => {
       </div>             
     </div>
    </div>
+  </div>
+</div>
   );
 };
 
