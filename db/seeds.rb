@@ -181,6 +181,7 @@ organizers.each do |organizer|
     #user: user, # Set user to nil
     event: event
   }
+  puts "Creating ticket with data: #{ticket_data}"  # Add this line for debugging
 
   Ticket.create!(ticket_data)
 end
