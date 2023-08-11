@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     skip_before_action :authorized, only: [:create_user]
 
    def index
-       events=Event.all.reverse
+       events=Event.all
        render json: events, each_serializer: EventSerializer, status: :ok
    end
 

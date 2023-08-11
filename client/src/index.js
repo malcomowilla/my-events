@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './Reducers/rootReducers';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import localStorageMiddleware from './middleware/localStorageMiddleware'; // Import the middleware

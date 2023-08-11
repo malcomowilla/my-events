@@ -24,7 +24,6 @@ const EventItem = (props) => {
           <div className="item-title">
               <h3>{event.name}</h3>
           </div>         
-      <p>{event.description}</p>
       <p>{event.location}</p>
       <p>{event.date}</p>
      <div className="card-button">
