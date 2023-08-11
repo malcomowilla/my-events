@@ -39,6 +39,9 @@ class AttendeesController < ApplicationController
     end
   
   
+end
+attendees = Attendee.all
+render json: attendees
 
 
 

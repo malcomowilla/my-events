@@ -2,6 +2,7 @@ import { useState} from "react"
 import { useDispatch/*,useSelector*/ } from "react-redux";
 import { /*LOGIN_SUCCESS,*/ LoginUser } from "./ServerActions";
 import { logoutUser } from "../Reducers/loginReducer";
+import "./UserAuth.css"
 const UserLogin=()=>{
    const dispatch = useDispatch()
 
@@ -29,42 +30,40 @@ const UserLogin=()=>{
     localStorage.removeItem("user"); 
   }
   return(
-    <>
-      
-
-      <form
-        onSubmit={handleFormSubmit}
-        className="border w-96 rounded-lg shadow-lg p-4 flex flex-col gap-4"
-      >
-        <h1 className="text-center text-2xl text-rose-600">Login Here</h1>
-        <h3 className="">Username</h3>
-        <div>
+    <div className="user-auth-content-container">
+           <form onSubmit={handleFormSubmit} className="user-auth-form">
+        <label htmlFor="user-auth-input-password"><h2>Username</h2></label>
+        <div className="user-auth-input-container">
           <input
+            id="user-auth-input-email" 
+            className="user-auth-form-input" 
             type="text"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             required
           />
         </div>
-        <h4>Password</h4>
-        <div>
+        <div className="user-auth-input-container" >
+        <label htmlFor="user-auth-input-password"><h2>Password</h2></label>
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input" 
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
           />
         </div>
-        <button type="submit">
-          Enter
-        </button>
-        </form>
-        <div>
-            <h2>Log Out</h2>
-            <button onClick={handleLogOut}>LOG OUT</button>
+        <div className="user-options-container">
+            <div className="remember-me-container">
+                <input type="checkbox" id="remember-me"/>
+                 <label htmlFor="remember-me">Remember Me</label>
+            </div>
         </div>
-        
-    </>
+        <button className="solid-success-btn form-user-auth-submit-btn">Login</button>
+        <button className="solid-success-btn form-user-auth-submit-btn" onClick={handleLogOut}>Logout</button>
+        </form>    
+    </div>
 
 )
 }

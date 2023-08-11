@@ -2,6 +2,7 @@
 //username,email
 import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./UserAuth.css"
 import { useDispatch,useSelector } from "react-redux";
 //import { ORGANIZER_SIGNUP_REQUEST } from "./ServerActions";
 import { organizerSignupRequest } from "../Reducers/organizerActions";
@@ -41,61 +42,63 @@ export default function OrganizerSignUpForm() {
     }
   }, [organizerDetails, dispatch]);
 return(
-    <>
-      
-     <h2>Organizer</h2>
-      <form
+  <div className="user-auth-content-container">
+       <form
         onSubmit={handleFormSubmit}
-        className="border w-96 rounded-lg shadow-lg p-4 flex flex-col gap-4"
+        className="user-auth-form"
       >
-        <h1 className="text-center text-2xl text-rose-600">Sign Up Here</h1>
-        <h3 className="">Name</h3>
-        <div>
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2> Organizer name</h2></label>
           <input
+            id="user-auth-input-name" 
+            className="user-auth-form-input"
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
             required
           />
         </div>
-        <h3>Email</h3>
-        <div>
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2>Email address</h2></label>        
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input" 
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
-        <h4>Password</h4>
-        <div>
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2>Password</h2></label>
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input" 
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             required
           />
         </div>
-        <h4>Image</h4>
-        <div>
+        <div className="user-auth-input-container">
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input"         
             type="file"
             value={image}
             onChange={(event) => setImage(event.target.value)}
             required
           />
         </div>
-        <button type="submit">
+        <button className="solid-success-btn form-user-auth-submit-btn" type="submit">
           Enter
         </button>
-        <p>
-          Already have an account?
-          <br />{" "}
-          <Link to="/login">
-            Login Here
-          </Link>
-        </p>
+              
+        <div className="existing-user-container">
+          <Link to="/login" className="links-with-blue-underline existing-user-link" id="existing-user-link">
+          Already have an account? Login Here</Link>
+        </div>
       </form>
-    </>
+    </div>
   );
 }

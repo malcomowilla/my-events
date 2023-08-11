@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import {  SIGNUP_SUCCESS } from "./ServerActions";
 import { NewUser } from "./ServerActions";
-
+import "./UserAuth.css"
 export default function UserSignUp() {
   const dispatch = useDispatch();
   
@@ -39,53 +39,49 @@ export default function UserSignUp() {
     }
   }, [userDetails, dispatch]);
 return(
-    <>
-      
-      <h2>User</h2>
-      <form
-        onSubmit={handleFormSubmit}
-        className="border w-96 rounded-lg shadow-lg p-4 flex flex-col gap-4"
-      >
-        <h1 className="text-center text-2xl text-rose-600">Sign Up Here</h1>
-        <h3 className="">Username</h3>
-        <div>
+  <div className="user-auth-content-container">
+      <form onSubmit={handleFormSubmit} className="user-auth-form">
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2>Username</h2></label>
           <input
+            id="user-auth-input-name" 
+            className="user-auth-form-input"         
             type="text"
             value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-            
-          />
+            required  
+            onChange={(event) => setUsername(event.target.value)}/>
         </div>
-        <h3>Email</h3>
-        <div>
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2>Email address</h2></label>
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input" 
             type="email"
+            placeholder="Email" 
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
-        <h4>Password</h4>
-        <div>
+        <div className="user-auth-input-container">
+        <label htmlFor="user-auth-input-password"><h2>Password</h2></label>
           <input
+            id="user-auth-input-password" 
+            className="user-auth-form-input" 
             type="password"
             value={password}
+            placeholder="Password" 
             onChange={(event) => setPassword(event.target.value)}
             required
           />
         </div>
-        <button type="submit">
-          Enter
-        </button>
-        <p>
-          Already have an account?
-          <br />{" "}
-          <Link to="/login">
-            Login Here
-          </Link>
-        </p>
+        <button className="solid-success-btn form-user-auth-submit-btn" type="submit">Create New Account</button>
+        
+        <div className="existing-user-container">
+          <Link to="/login" className="links-with-blue-underline existing-user-link" id="existing-user-link">
+          Already have an account?</Link>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
