@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./EventDetails.css"
 import { useSelector } from "react-redux";
 import Ticket from "./Ticket";
 import { useNavigate } from "react-router-dom";
@@ -55,8 +56,9 @@ const EventDetails = () => {
       </>
     );
   }else
-  return (
-    <>
+ return (
+  <div className="product-page-container">
+    <div className="product-page-item">
       {event.name && (
         <>
           <h2>{event.name}</h2>
@@ -73,14 +75,15 @@ const EventDetails = () => {
         </>
       )}
       <div>
-      {" "}
-      <button onClick={toCart}>Go to Cart</button>
-      {" "}
+        {" "}
+        <button onClick={toCart}>Go to Cart</button>
+        {" "}
       </div>
       <Ticket tickets={tickets} event={event} />
-     
-    </>
-  );
+    </div>
+  </div>
+);
+ 
 }
 
 export default EventDetails;

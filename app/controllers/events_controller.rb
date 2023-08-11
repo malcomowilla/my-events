@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     skip_before_action :authorized, only: [:create_user]
 
    def index
-       events=Event.all
+       events=Event.all.reverse
        render json: events, each_serializer: EventSerializer, status: :ok
    end
 
@@ -152,4 +152,3 @@ class EventsController < ApplicationController
        params.permit(:name, :image_url, :date, :description, :location)
    end
 end
->>>>>>> e26ee1632b497caf8f6d1ab5d802c5ada2481571

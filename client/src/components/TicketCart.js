@@ -1,6 +1,7 @@
 import React from "react";
 //import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import "./TicketCart.css"
 //import { useDispatch } from "react-redux";
 //import { removeBookedTicket } from "../Reducers/ticketActions";
 //import { useNavigate } from "react-router-dom";
@@ -141,22 +142,27 @@ const TicketCart = () => {
     };
     
     return (
-        <>
-            <h2>Cart</h2>
+    <div className="cart-content-container">
+        <h2>Cart</h2>
+        <div className="cart-grid">
+           <div className="cart-items-grid">
             {loggedInUser ? (
                 fetchedTickets.map((ticket, index) => (
-                    <div key={ticket.id}>
-                        <h1>{ticket.event.name}</h1>
-                        <h2>{ticket.ticket_type}</h2>
-                        <div>
-                            <img src={ticket.image} alt={ticket.ticket_type} />
-                            <p>PRICE: Ksh{ticket.price}</p>
-                        </div>
+                    <div className="card-basic-horizontal" key={ticket.id}>
+                        <img className="cart-item-book-img" src={ticket.image} alt={ticket.ticket_type} />
+                            <div id="cart-item-detail" className="card-item-details">
+                                <h3 id="item-title">{ticket.event.name}</h3>
+                                <h3>{ticket.ticket_type}</h3>
+                            <p className="price-details">PRICE: Ksh{ticket.price}</p>
                         <button onClick={() => subtractTicket(index)}>-</button>
                         <button onClick={() => addTicket(index)}>+</button>
                         <p>Tickets: {ticketCounts[index]}</p>
                         <p>Total: Ksh{ticketPrices[index]}</p>
-                        <button onClick={() => removeTicket(ticket,loggedInUser)} disabled={deletingTicket === ticket}>Remove</button>
+                        <div className="cart-horizontal-card-btns card-button">
+                        <button className="solid-primary-btn" onClick={() => removeTicket(ticket,loggedInUser)} disabled={deletingTicket === ticket}>Remove</button>
+                         </div>
+
+                     </div>
                     </div>
                 ))
             ) : (
@@ -164,7 +170,10 @@ const TicketCart = () => {
             )}
             <h3>Total Checkout: Ksh{totalPrice}</h3>
             <button>Proceed to payment</button>
-        </>
+        
+        </div>
+        </div>
+        </div>
     );
 };
 
