@@ -1,5 +1,4 @@
 class AttendeesController < ApplicationController
-<<<<<<< HEAD
     before_action :set_event
 
     def index
@@ -40,14 +39,3 @@ class AttendeesController < ApplicationController
   
   
 end
-=======
-attendees = Attendee.all
-render json: attendees
-    
-end
-
-
-
-
-
->>>>>>> e26ee1632b497caf8f6d1ab5d802c5ada2481571
