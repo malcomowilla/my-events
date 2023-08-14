@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
     
   
 
+
 class TicketsController < ApplicationController
     # GET /tickets.:format) tickets#show
     # returns tickets related to a specific event

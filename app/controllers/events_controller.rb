@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
     # skip_before_action :verify_authenticity_token, only: [:create]
 
+   def index
+       events=Event.all
+       render json: events, each_serializer: EventSerializer, status: :ok
+   end
+
     # protect_from_forgery with: :null_session
      def index
          events=Event.all
@@ -80,4 +85,25 @@ class EventsController < ApplicationController
 
   
 
+      if event.save
+        render json: event, status: :created
+      else
+        render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Organizer not found' }, status: :not_found
+    end
+  end
+
+
    
+
+
+  
+
+   
+   def event_params
+       params.permit(:name, :image_url, :date, :description, :location)
+   end
+end
+

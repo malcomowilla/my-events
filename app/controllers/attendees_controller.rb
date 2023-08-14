@@ -39,6 +39,8 @@ class AttendeesController < ApplicationController
     end
   
   
+end
+
 
 
 
