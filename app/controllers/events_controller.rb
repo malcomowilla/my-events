@@ -95,41 +95,13 @@ class EventsController < ApplicationController
     end
   end
 
-   # PUT/PATCH /events/{id}
-   def update
-       # check whether the event exists
-       event = find_event
 
-       if event
-           event.update(event_params)
-           # return it
-           render json: event, status: :accepted
-       else
-           # throw a not found error
-           render json: {error: "Event not found"}, status: :not_found
-       end
-   end
+   
 
-   # DELETE /events/{id}
-   def destroy
-        # check whether the event exists
-        event = find_event
-       
-       #  delete the event
-       if event
-           event.destroy
-           head :no_content
-       #  return a not found event
-       else 
-           render json: {error: 'Event not found'}, status: not_found
-       end
-   end
 
-   private
-   def find_event
-    Event.find_by(id:params[:id])
-   end
+  
 
+   
    def event_params
        params.permit(:name, :image_url, :date, :description, :location)
    end

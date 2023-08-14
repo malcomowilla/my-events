@@ -40,8 +40,7 @@ class AttendeesController < ApplicationController
   
   
 end
-attendees = Attendee.all
-render json: attendees
+
 
 
 
